@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FinZ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="disposition_money">Disposición Efectivo</string>
+    <string name="credit_evaluation">Evaluación Crediticia</string>
+    <string name="change_money">Cambio y Venta de Dolar</string>
+</resources>
