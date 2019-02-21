@@ -39,7 +39,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/drawable_border_button"
-            android:text="Siguiente"
+            android:text="@string/str_btn_next"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
     </LinearLayout>

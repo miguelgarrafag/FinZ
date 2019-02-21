@@ -18,7 +18,7 @@ public class MenuActivity extends AppCompatActivity {
         btnDiposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this, DispositionMoney.class));
+                startActivity(new Intent(MenuActivity.this, PrincipalActivity.class));
             }
         });
     }

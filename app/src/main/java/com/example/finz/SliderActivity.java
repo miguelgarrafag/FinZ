@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+
 public class SliderActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -19,17 +21,18 @@ public class SliderActivity extends AppCompatActivity {
     private int[] layouts;
     private TextView[] dotstv;
     private Button btnNext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewPager =  findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.view_pager);
         layoutDot = findViewById(R.id.dotLayout);
         btnNext = findViewById(R.id.btn_next);
 
         layouts = new int[]{R.layout.slider_1, R.layout.slider_2, R.layout.slider_3};
-        pagerAdapter = new MyPagerAdapter(layouts,getApplicationContext());
+        pagerAdapter = new MyPagerAdapter(layouts, getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -40,10 +43,10 @@ public class SliderActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                if (i == layouts.length - 1){
-                    btnNext.setText("Finalizar");
-                }else {
-                    btnNext.setText("Siguiente");
+                if (i == layouts.length - 1) {
+                    btnNext.setText(getResources().getText(R.string.str_finalize));
+                } else {
+                    btnNext.setText(getResources().getText(R.string.str_btn_next));
                 }
                 setDotStatus(i);
             }
@@ -61,16 +64,12 @@ public class SliderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 int currentPage = viewPager.getCurrentItem() + 1;
-                if (currentPage < layouts.length){
+                if (currentPage < layouts.length) {
                     viewPager.setCurrentItem(currentPage);
                 } else {
-                    btnNext.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(SliderActivity.this, MenuActivity.class));
-                            finish();
-                        }
-                    });
+                    startActivity(new Intent(SliderActivity.this, MenuActivity.class));
+                    finish();
+
                 }
             }
         });
@@ -78,7 +77,7 @@ public class SliderActivity extends AppCompatActivity {
     }
 
 
-    private void setDotStatus(int page){
+    private void setDotStatus(int page) {
         layoutDot.removeAllViews();
         dotstv = new TextView[layouts.length];
         for (int i = 0; i < dotstv.length; i++) {
@@ -87,9 +86,8 @@ public class SliderActivity extends AppCompatActivity {
             dotstv[i].setTextSize(30);
             dotstv[i].setTextColor(Color.parseColor("#a9b4bb"));
             layoutDot.addView(dotstv[i]);
-
         }
-        if (dotstv.length>0){
+        if (dotstv.length > 0) {
 
         }
     }

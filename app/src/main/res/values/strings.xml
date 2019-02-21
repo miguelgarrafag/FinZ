@@ -4,7 +4,46 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="disposition_money">Disposición Efectivo</string>
-    <string name="credit_evaluation">Evaluación Crediticia</string>
-    <string name="change_money">Cambio y Venta de Dolar</string>
+
+
+    <!--Disposition Money-->
+    <string name="str_personal">Personal</string>
+    <string name="str_btn_payment">Proceder al Pago</string>
+    <string name="hint_fullname">Nombres y Apellidos</string>
+    <string name="hint_email">Correo</string>
+    <string name="hint_cel">Número celular</string>
+    <string name="hint_amount">Monto a extraer</string>
+    <string name="hint_card_number">Número de Tarjeta</string>
+    <string name="hint_expiration_date">Fecha de Espiración</string>
+    <string name="hint_csv">CSV</string>
+    <string name="hint_account_number">Número de Cuenta</string>
+
+    <!--LoginFragment-->
+    <string name="hint_password">Contraseña</string>
+    <string name="str_btn_ready">Listo</string>
+
+    <!--MainActivity-->
+    <string name="str_btn_next">Siguiente</string>
+
+    <!--MenuActivity-->
+    <string name="str_disposition_money">Disposición Efectivo</string>
+    <string name="str_credit_evaluation">Evaluación Crediticia</string>
+    <string name="str_change_money">Cambio y Venta de Dolar</string>
+
+    <!--PrincipalActivity-->
+    <string name="str_register">Registrarse</string>
+    <string name="str_login">Login</string>
+
+    <!--RegisterFragment-->
+    <string name="str_birthday_date">Fecha de Nacimiento</string>
+    <string name="str_dni">DNI</string> 
+    
+    <!--SliderActivity-->
+    <string name="str_finalize">Finalizar</string>
+
+    <!--DispositionDialog-->
+    <string name="str_confirmation">Confirmación de Número de Cuenta</string>
+    <string name="str_verify">Verifica el Número de Cuenta ingresado</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_ok">Ok</string>
 </resources>

@@ -27,7 +27,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@drawable/drawable_circle"
-                android:text="@string/disposition_money"
+                android:text="@string/str_disposition_money"
                 android:textColor="@android:color/white"></Button>
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -39,13 +39,13 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/drawable_circle"
                     android:textColor="@android:color/white"
-                    android:text="@string/credit_evaluation"></Button>
+                    android:text="@string/str_credit_evaluation"></Button>
             <Button
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:background="@drawable/drawable_circle"
                     android:textColor="@android:color/white"
-                    android:text="@string/change_money"></Button>
+                    android:text="@string/str_change_money"></Button>
         </LinearLayout>
     </LinearLayout>
 
