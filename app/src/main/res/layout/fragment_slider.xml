@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SliderFragment"
+    tools:context=".fragment.SliderFragment"
     android:orientation="vertical"
     android:background="@drawable/drawable_gradient_blue"
     android:gravity="center"
