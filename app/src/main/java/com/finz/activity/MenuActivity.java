@@ -2,27 +2,29 @@ package com.finz.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 
 import com.finz.R;
 
-public class MenuActivity extends AppCompatActivity {
-    private Button btnDiposition;
+import butterknife.BindView;
+import dagger.android.AndroidInjection;
+
+public class MenuActivity extends BaseActivity {
+
+    @BindView(R.id.button_disposition)
+    Button btnDiposition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
 
-        btnDiposition = findViewById(R.id.button_disposition);
+        btnDiposition.setOnClickListener(v -> startActivity(new Intent(MenuActivity.this, DispositionMoneyActivity.class)));
+    }
 
-        btnDiposition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MenuActivity.this, DispositionMoneyActivity.class));
-            }
-        });
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_menu;
     }
 
 

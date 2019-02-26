@@ -1,26 +1,34 @@
 package com.finz.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.finz.R;
 
-public class LoginFragment extends Fragment {
-    View view;
+import dagger.android.support.AndroidSupportInjection;
 
-   public LoginFragment(){
+public class LoginFragment extends BaseFragment {
 
-   }
+    public LoginFragment(){}
 
-    @Nullable
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
+    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.fragment_login, container, false);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        AndroidSupportInjection.inject(this);
+        setHasOptionsMenu(true);
+        setup();
+    }
 
-       return view;
+    private void setup() {
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.fragment_login;
     }
 }

@@ -2,17 +2,26 @@ package com.finz.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.finz.adapter.PagerAdapter;
+import com.finz.adapter.FragmentPagerAdapter;
 import com.finz.R;
 import com.finz.fragment.LoginFragment;
 import com.finz.fragment.RegisterFragment;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
-public class DispositionMoneyActivity extends BaseActivity {
+public class DispositionMoneyActivity extends BaseActivity implements HasSupportFragmentInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
@@ -25,9 +34,9 @@ public class DispositionMoneyActivity extends BaseActivity {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
 
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.AddFragment(new RegisterFragment(), "Register");
-        adapter.AddFragment(new LoginFragment(), "Login");
+        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(RegisterFragment.newInstance(), getString(R.string.register));
+        adapter.addFragment(LoginFragment.newInstance(), getString(R.string.login));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -38,4 +47,8 @@ public class DispositionMoneyActivity extends BaseActivity {
         return R.layout.activity_disposition;
     }
 
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
 }

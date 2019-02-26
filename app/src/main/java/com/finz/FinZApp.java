@@ -15,10 +15,9 @@ import dagger.android.HasServiceInjector;
 
 public class FinZApp extends Application implements HasActivityInjector, HasServiceInjector {
 
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
-    @Inject
-    DispatchingAndroidInjector<Service> dispatchingServiceInjector;
+    @Inject DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+
+    @Inject DispatchingAndroidInjector<Service> dispatchingServiceInjector;
 
     @Override
     public void onCreate() {

@@ -13,16 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.finz.activity.DispositionMoneyActivity;
 import com.mobsandgeeks.saripaar.Validator;
-import com.sudtechnologies.mainmayorizta.R;
-import com.sudtechnologies.mainmayorizta.activity.LoginActivity;
-import com.sudtechnologies.mainmayorizta.aplication.ApplicationPreferences;
-import com.sudtechnologies.mainmayorizta.constant.ConstantsCore;
-import com.sudtechnologies.mainmayorizta.listener.SuccessListener;
-import com.sudtechnologies.mainmayorizta.rest.RestListener;
-import com.sudtechnologies.mainmayorizta.rest.token.RestToken;
-import com.sudtechnologies.mainmayorizta.rest.token.entity.Token;
-import com.sudtechnologies.mainmayorizta.util.UtilCore;
+import com.finz.R;
+import com.finz.aplication.ApplicationPreferences;
+import com.finz.constant.ConstantsCore;
+import com.finz.listener.SuccessListener;
+import com.finz.rest.RestListener;
+import com.finz.rest.token.RestToken;
+import com.finz.rest.token.entity.Token;
+import com.finz.util.UtilCore;
 
 import java.util.Objects;
 
@@ -110,7 +110,7 @@ public abstract class BaseFragment extends Fragment {
                         if(statusCode==401) {
                             showToastLong(R.string.str_error_sesion);
                             prefs.clearall();
-                            startActivity(new Intent(getContext(), LoginActivity.class));
+                            startActivity(new Intent(getContext(), DispositionMoneyActivity.class));
                             Objects.requireNonNull(getActivity()).finish();
                         }else
                             showToastLong(getString(R.string.blank_2_string_ss, getString(R.string.str_error_app), TAG));

@@ -1,29 +1,35 @@
 package com.finz.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.finz.R;
 
+import dagger.android.support.AndroidSupportInjection;
 
-public class SliderFragment extends Fragment {
-    public SliderFragment() {
+
+public class SliderFragment extends BaseFragment {
+
+    public SliderFragment() {}
+
+    public static SliderFragment newInstance() {
+        return new SliderFragment();
     }
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        AndroidSupportInjection.inject(this);
+        setHasOptionsMenu(true);
+        setup();
+    }
 
+    private void setup() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_slider, container, false);
+    protected int getLayoutResourceId() {
+        return R.layout.fragment_slider;
     }
 }

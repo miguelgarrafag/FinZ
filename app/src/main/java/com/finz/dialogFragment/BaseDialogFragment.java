@@ -10,8 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.sudtechnologies.mainmayorizta.R;
+import com.finz.R;
 
 import java.util.Objects;
 
@@ -19,7 +18,6 @@ import butterknife.ButterKnife;
 
 public abstract class BaseDialogFragment extends DialogFragment {
 
-    public FirebaseStorage storage;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -27,8 +25,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
         View v = inflater.inflate(getLayoutResourceId(), container);
         ButterKnife.bind(this, v);
         Objects.requireNonNull(getDialog().getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        storage = FirebaseStorage.getInstance();
 
         return v;
     }
