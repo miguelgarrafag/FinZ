@@ -43,6 +43,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.15'
     implementation 'com.google.code.gson:gson:2.8.4'
     implementation 'com.mobsandgeeks:android-saripaar:2.0.2'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation 'junit:junit:4.12'
@@ -50,3 +51,4 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
 }
+apply plugin: 'com.google.gms.google-services'
