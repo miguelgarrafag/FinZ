@@ -1,10 +1,77 @@
 <resources>
     <string name="app_name">FinZ</string>
 
+    <string name="register">Registro</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="finish">Finalizar</string>
+    <string name="next">Siguiente</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="disposition_money">Disposición Efectivo</string>
+    <string name="credit_evaluation">Evaluación Crediticia</string>
+    <string name="change_money">Cambio y Venta de Dolar</string>
 
+    <string name="action_search">Busqueda</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_price">Lev. Precios</string>
+
+    <string name="dialog_change_price">Nuevo Precio de Compra</string>
+    <string name="dialog_purchased_count">Ingrese la cantidad comprada</string>
+    <string name="dialog_change_quantity_delivered">Cantidad a embolsar</string>
+    <string name="dialog_coment">Comentario</string>
+    <string name="dialog_price_quantity">Ingrese todos los campos</string>
+    <string name="dialog_user">Usuario</string>
+
+    <string name="label_hashtag">#</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_ok">Aceptar</string>
+    <string name="label_today">Hoy</string>
+    <string name="label_of">de</string>
+    <string name="label_purchase_info">Información de la venta</string>
+    <string name="label_purchase_date">Fecha de Compra</string>
+    <string name="label_delivery_date">Fecha de Entrega</string>
+    <string name="label_purchase_time">Hora de Entrega</string>
+    <string name="label_payment_method">Método de Pago</string>
+    <string name="label_payment_status">Estado del Pago</string>
+    <string name="label_subtotal">Sub-total</string>
+    <string name="label_total">Total</string>
+    <string name="label_delivery">Delivery</string>
+    <string name="label_purchase_detail_info">Detalles de la venta</string>
+
+    <string name="str_login_failed">El correo o contraseña son incorrectos</string>
+    <string name="str_login_email_valid">Ingrese su correo</string>
+    <string name="str_login_email_format">Ingrese un correo válido</string>
+    <string name="str_login_password_valid">Ingrese su Contraseña</string>
+    <string name="str_error_empty">Campo vacio</string>
+    <string name="str_oh_no">Oh, no!</string>
+    <string name="str_loading">Cargando…</string>
+    <string name="str_no_items">Sin items aún</string>
+    <string name="str_no_orders">Sin ordenes aún</string>
+    <string name="str_no_prices">Aún no puedes levantar precios</string>
+    <string name="str_no_items_details">No desesperes, tus items llegarán pronto</string>
+    <string name="str_no_orders_details">No desesperes, tus ordenes llegarán pronto</string>
+    <string name="str_no_prices_details">No desesperes, seguro en momentos te asignaran la tarea</string>
+    <string name="str_verify_connection">comprueba tu conexión\n a internet</string>
+    <string name="str_verify_connection_server">Si el problema persiste contacte a soporte técnico de la app</string>
+    <string name="str_error_internet">Estamos presentando problemas de conexión por causas del internet, por favor inténtelo de nuevo</string>
+    <string name="str_unknow_rest_error">Error de comunicación desconocido</string>
+    <string name="str_unknow_validate_mnessage_error">Error desconocido</string>
+    <string name="str_error_app">Error interno de la app, inténtelo de nuevo, si el problema persiste contacte al proveedor de la applicación</string>
+    <string name="str_error_sesion">Se ha iniciado sesión en otro dispositivo con su cuenta, le recomendamos iniciar sesión de nuevo, recuerde que las sesiones multiples no estan permitidas</string>
+    <string name="str_error_uploading_file">Error al subir la firma, causado por:</string>
+    <string name="str_error_quantity">La cantidad debe ser mayor o igual a la requerida</string>
+
+    <string name="msg_orders_list">Ordenes agrupadas por fehca de entrega</string>
+    <string name="msg_provider_list">Items agrupados por proveedor</string>
+
+    <string name="blank_2_string_ss">%s - %s</string>
+    <string name="blank_2_string_ns">%s%s</string>
+    <string name="blank_2_string_s">%s %s</string>
+    <string name="blank_soles">S/%.2f</string>
+    <string name="blank_decimal">%.2f</string>
+    <string name="blank_not_found">No se encontró \"%s\"</string>
 
     <!--Disposition Money-->
     <string name="str_personal">Personal</string>
@@ -36,8 +103,8 @@
 
     <!--RegisterFragment-->
     <string name="str_birthday_date">Fecha de Nacimiento</string>
-    <string name="str_dni">DNI</string> 
-    
+    <string name="str_dni">DNI</string>
+
     <!--SliderActivity-->
     <string name="str_finalize">Finalizar</string>
 
