@@ -29,7 +29,7 @@ public class DispositionMoneyActivity extends BaseActivity {
             exampleDialog.show();
             exampleDialog.setClickCallback(response -> {
                 if (response) {
-                    startActivity(new Intent(DispositionMoneyActivity.this, InformationDispositionActivity.class));
+                    startActivity(new Intent(DispositionMoneyActivity.this, ValidProcessActivity.class));
                     finish();
                 } else {
                     exampleDialog.dismiss();

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.PrincipalActivity">
+    tools:context=".activity.PrincipalActivity"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarid"
@@ -20,7 +21,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@android:color/black"
+            />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
@@ -29,10 +32,11 @@
             android:layout_height="wrap_content"
             android:minHeight="?actionBarSize"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorWhite"
-            app:tabTextColor="@color/colorWhite"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabTextColor="@color/colorAccent"
             app:tabIndicatorHeight="4dp"
-            app:tabMode="fixed"/>
+            app:tabMode="fixed"
+            />
 
     </android.support.design.widget.AppBarLayout>
 

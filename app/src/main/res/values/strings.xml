@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">FinZ</string>
 
-    <string name="register">Registro</string>
-    <string name="login">Iniciar Sesión</string>
+    <string name="register">REGISTRATE</string>
+    <string name="login">INGRESA</string>
     <string name="finish">Finalizar</string>
     <string name="next">Siguiente</string>
 
@@ -63,7 +63,7 @@
     <string name="str_error_uploading_file">Error al subir la firma, causado por:</string>
     <string name="str_error_quantity">La cantidad debe ser mayor o igual a la requerida</string>
 
-    <string name="msg_orders_list">Ordenes agrupadas por fehca de entrega</string>
+    <string name="msg_orders_list">Ordenes agrupadas por feCHa de entrega</string>
     <string name="msg_provider_list">Items agrupados por proveedor</string>
 
     <string name="blank_2_string_ss">%s - %s</string>
@@ -84,33 +84,44 @@
     <string name="hint_expiration_date">Fecha de Espiración</string>
     <string name="hint_csv">CSV</string>
     <string name="hint_account_number">Número de Cuenta</string>
+    <string name="hint_cant">Monto</string>
+    <string name="hint_change">Cambio + Interés</string>
+    <string name="hint_bank">Seleccionar Banco</string>
 
-    <!--LoginFragment-->
+
+
     <string name="hint_password">Contraseña</string>
     <string name="str_btn_ready">Listo</string>
-
-    <!--MainActivity-->
     <string name="str_btn_next">Siguiente</string>
-
-    <!--MenuActivity-->
     <string name="str_disposition_money">Disposición Efectivo</string>
     <string name="str_credit_evaluation">Evaluación Crediticia</string>
-    <string name="str_change_money">Cambio y Venta de Dolar</string>
-
-    <!--PrincipalActivity-->
+    <string name="str_change_money">Cambio y Venta</string>
     <string name="str_register">Registrarse</string>
     <string name="str_login">Login</string>
-
-    <!--RegisterFragment-->
+    <string name="str_welcome">Bienvenido</string>
     <string name="str_birthday_date">Fecha de Nacimiento</string>
     <string name="str_dni">DNI</string>
-
-    <!--SliderActivity-->
+    <string name="str_enter">Ingresar</string>
     <string name="str_finalize">Finalizar</string>
-
-    <!--DispositionDialog-->
     <string name="str_confirmation">Confirmación de Número de Cuenta</string>
     <string name="str_verify">Verifica el Número de Cuenta ingresado</string>
     <string name="str_cancel">Cancel</string>
     <string name="str_ok">Ok</string>
+    <string name="str_valid_process">Proceso Válida</string>
+    <string name="str_back_home">Regresar al Home</string>
+    <string name="str_change_sale">Cambio y Venta</string>
+    <string name="str_buy">Compra:</string>
+    <string name="str_sale">Venta:</string>
+    <string name="str_buy_btn">Compra</string>
+    <string name="str_sale_btn">Venta</string>
+    <string name="str_choice_method">Elige uno de nuestros métodos</string>
+    <string name="str_process_change">Procesar Cambio</string>
+    <string name="str_bank_accounts">Visualiza nuestras cuentas bancarias para el depósito manual</string>
+    <string name="str_bank_accounts_btn">Ver Cuentas Bancarias</string>
+    <string name="str_fill_in_form">Si realizaste el depósito, llena los siguientes datos y listo</string>
+    <string name="str_boucher_photo">Tomar foto al Boucher</string>
+    <string name="str_saving_account">Cuenta Ahorro</string>
+    <string name="str_current_account">Cuenta Corriente</string>
+    <string name="str_make_change">Realizar el Cambio</string>
+    <string name="str_deposit_description">Deposita tu monto en uno de los bancos para nosotros poder realizar el deposito del cambio</string>
 </resources>

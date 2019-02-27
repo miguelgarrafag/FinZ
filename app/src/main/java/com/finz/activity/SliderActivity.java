@@ -15,7 +15,7 @@ import com.finz.R;
 import butterknife.BindView;
 import dagger.android.AndroidInjection;
 
-public class SliderActivity extends BaseActivity  {
+public class SliderActivity extends BaseActivity {
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -37,16 +37,23 @@ public class SliderActivity extends BaseActivity  {
         super.onCreate(savedInstanceState);
 
         layouts = new int[]{R.layout.slider_1, R.layout.slider_2, R.layout.slider_3};
-        pagerAdapter = new MyPagerAdapter(layouts,getApplicationContext());
+        pagerAdapter = new MyPagerAdapter(layouts, getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override public void onPageScrolled(int i, float v, int i1) {}
-            @Override public void onPageScrollStateChanged(int i) {}
-            @Override public void onPageSelected(int i) {
-                if (i == layouts.length - 1){
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i == layouts.length - 1) {
                     btnNext.setText(getString(R.string.finish));
-                }else {
+                } else {
                     btnNext.setText(getString(R.string.next));
                 }
                 setDotStatus(i);
@@ -57,30 +64,31 @@ public class SliderActivity extends BaseActivity  {
 
         btnNext.setOnClickListener(v -> {
             int currentPage = viewPager.getCurrentItem() + 1;
-            if (currentPage < layouts.length){
+            if (currentPage < layouts.length) {
                 viewPager.setCurrentItem(currentPage);
             } else {
-                btnNext.setOnClickListener(v1 -> {
-                    startActivity(new Intent(SliderActivity.this, MenuActivity.class));
-                    finish();
-                });
+                startActivity(new Intent(SliderActivity.this, MenuActivity.class));
+                finish();
             }
         });
 
     }
 
-    private void setDotStatus(int page){
+    private void setDotStatus(int page) {
         layoutDot.removeAllViews();
         dotstv = new TextView[layouts.length];
         for (int i = 0; i < dotstv.length; i++) {
             dotstv[i] = new TextView(this);
             dotstv[i].setText(Html.fromHtml("&#8226"));
             dotstv[i].setTextSize(30);
-            dotstv[i].setTextColor(Color.parseColor("#a9b4bb"));
             layoutDot.addView(dotstv[i]);
-
+            if (i == page) {
+                dotstv[i].setTextColor(Color.parseColor("#ffffff"));
+            } else {
+                dotstv[i].setTextColor(Color.parseColor("#a9b4bb"));
+            }
         }
-        if (dotstv.length>0){
+        if (dotstv.length > 0) {
 
         }
     }

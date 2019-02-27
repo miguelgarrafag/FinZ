@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+
 
 import com.finz.adapter.FragmentPagerAdapter;
 import com.finz.R;
@@ -25,8 +27,9 @@ public class PrincipalActivity extends BaseActivity implements HasSupportFragmen
 
     @BindView(R.id.tablayout)
     TabLayout tabLayout;
-
-    @BindView(R.id.view_pager)
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.viewpager)
     ViewPager viewPager;
 
     @Override
@@ -38,9 +41,12 @@ public class PrincipalActivity extends BaseActivity implements HasSupportFragmen
         adapter.addFragment(RegisterFragment.newInstance(), getString(R.string.register));
         adapter.addFragment(LoginFragment.newInstance(), getString(R.string.login));
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.str_welcome));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
 
     @Override
     protected int getLayoutResourceId() {

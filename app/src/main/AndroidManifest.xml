@@ -16,30 +16,52 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".activity.SliderActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".activity.SliderActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MenuActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.PrincipalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PrincipalActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.DispositionMoneyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DispositionMoneyActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.InformationDispositionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.InformationDispositionActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ValidProcessActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ChangeMoneyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DepositActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ListAccountActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
