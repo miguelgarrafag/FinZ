@@ -1,6 +1,7 @@
 package com.finz.di;
 
 import com.finz.activity.ChangeMoneyActivity;
+import com.finz.activity.CreditEvaluationActivity;
 import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.InformationDispositionActivity;
@@ -47,4 +48,7 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector()
     abstract ListAccountActivity bindListAccountActivity();
+
+    @ContributesAndroidInjector()
+    abstract CreditEvaluationActivity bindCreditEvaluationActivity();
 }

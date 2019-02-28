@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/img_slide_3"
+        android:src="@drawable/img_slide_4"
         android:layout_marginTop="120dp"/>
     <TextView
         android:id="@+id/fragment_title"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_gravity="center"
-        android:text="@string/str_title_slide_3"
+        android:text="@string/str_title_slide_4"
         android:layout_marginTop="30dp"
         android:textSize="28dp"
         android:textStyle="bold"

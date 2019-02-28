@@ -124,4 +124,18 @@
     <string name="str_current_account">Cuenta Corriente</string>
     <string name="str_make_change">Realizar el Cambio</string>
     <string name="str_deposit_description">Deposita tu monto en uno de los bancos para nosotros poder realizar el deposito del cambio</string>
+    <string name="str_title_slide_1">100% Virtual</string>
+    <string name="str_description_slide_1">Somos agencia financiera virtual que
+    ofrece tres servicios innovadores y
+        100% seguros.</string>
+    <string name="str_title_slide_2">Disposición de efectivo</string>
+    <string name="str_description_slide_2">Retira el efectivo contra las lineas de tus tarjetas de
+    crédito de manera rápida y a una tasa insuperable</string>
+    <string name="str_title_slide_3">Evaluación Crediticia</string>
+    <string name="str_description_slide_3">Envía tu prestamo y comprueba que bancos te lo aprueban
+    en cuestión de minutos</string>
+    <string name="str_title_slide_4">Compra y Venta</string>
+    <string name="str_title_evaluation">Bancos con los que trabajamos</string>
+    <string name="str_send_request">Enviar Solicitud</string>
+
 </resources>

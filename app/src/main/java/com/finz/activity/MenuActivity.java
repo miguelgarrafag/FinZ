@@ -18,10 +18,17 @@ public class MenuActivity extends BaseActivity {
     public void Disposition(){
         startActivity(new Intent(this, PrincipalActivity.class));
     }
+
     @OnClick(R.id.btn_change_money)
     public void Change(){
         startActivity(new Intent(this, ChangeMoneyActivity.class));
     }
+
+    @OnClick(R.id.btn_credit_evaluation)
+    public void Evaluation(){
+        startActivity(new Intent(this, CreditEvaluationActivity.class));
+    }
+
 
     @Override
     protected int getLayoutResourceId() {

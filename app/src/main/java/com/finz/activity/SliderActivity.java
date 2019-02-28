@@ -36,7 +36,7 @@ public class SliderActivity extends BaseActivity {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
 
-        layouts = new int[]{R.layout.slider_1, R.layout.slider_2, R.layout.slider_3};
+        layouts = new int[]{R.layout.slider_1, R.layout.slider_2, R.layout.slider_3, R.layout.slider_4};
         pagerAdapter = new MyPagerAdapter(layouts, getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 
