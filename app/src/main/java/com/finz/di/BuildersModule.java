@@ -9,6 +9,7 @@ import com.finz.activity.ListAccountActivity;
 import com.finz.activity.PrincipalActivity;
 import com.finz.activity.MainActivity;
 import com.finz.activity.MenuActivity;
+import com.finz.activity.ProfileActivity;
 import com.finz.activity.SliderActivity;
 import com.finz.activity.ValidProcessActivity;
 
@@ -51,4 +52,8 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector()
     abstract CreditEvaluationActivity bindCreditEvaluationActivity();
+
+    @ContributesAndroidInjector()
+    abstract ProfileActivity bindProfileActivity();
+
 }

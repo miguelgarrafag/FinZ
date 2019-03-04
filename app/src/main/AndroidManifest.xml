@@ -66,6 +66,10 @@
             android:name=".activity.CreditEvaluationActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
