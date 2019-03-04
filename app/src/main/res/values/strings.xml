@@ -1,10 +1,139 @@
 <resources>
     <string name="app_name">FinZ</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">REGISTRATE</string>
+    <string name="login">INGRESA</string>
+    <string name="finish">Finalizar</string>
+    <string name="next">Siguiente</string>
 
     <string name="disposition_money">Disposición Efectivo</string>
     <string name="credit_evaluation">Evaluación Crediticia</string>
     <string name="change_money">Cambio y Venta de Dolar</string>
+
+    <string name="action_search">Busqueda</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_price">Lev. Precios</string>
+
+    <string name="dialog_change_price">Nuevo Precio de Compra</string>
+    <string name="dialog_purchased_count">Ingrese la cantidad comprada</string>
+    <string name="dialog_change_quantity_delivered">Cantidad a embolsar</string>
+    <string name="dialog_coment">Comentario</string>
+    <string name="dialog_price_quantity">Ingrese todos los campos</string>
+    <string name="dialog_user">Usuario</string>
+
+    <string name="label_hashtag">#</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_ok">Aceptar</string>
+    <string name="label_today">Hoy</string>
+    <string name="label_of">de</string>
+    <string name="signature">Firma del cliente</string>
+    <string name="label_purchase_info">Información de la venta</string>
+    <string name="label_purchase_date">Fecha de Compra</string>
+    <string name="label_delivery_date">Fecha de Entrega</string>
+    <string name="label_purchase_time">Hora de Entrega</string>
+    <string name="label_payment_method">Método de Pago</string>
+    <string name="label_payment_status">Estado del Pago</string>
+    <string name="label_subtotal">Sub-total</string>
+    <string name="label_total">Total</string>
+    <string name="label_delivery">Delivery</string>
+    <string name="label_purchase_detail_info">Detalles de la venta</string>
+
+    <string name="str_login_failed">El correo o contraseña son incorrectos</string>
+    <string name="str_login_email_valid">Ingrese su correo</string>
+    <string name="str_login_email_format">Ingrese un correo válido</string>
+    <string name="str_login_password_valid">Ingrese su Contraseña</string>
+    <string name="str_error_empty">Campo vacio</string>
+    <string name="str_oh_no">Oh, no!</string>
+    <string name="str_loading">Cargando…</string>
+    <string name="str_no_items">Sin items aún</string>
+    <string name="str_no_orders">Sin ordenes aún</string>
+    <string name="str_no_prices">Aún no puedes levantar precios</string>
+    <string name="str_no_items_details">No desesperes, tus items llegarán pronto</string>
+    <string name="str_no_orders_details">No desesperes, tus ordenes llegarán pronto</string>
+    <string name="str_no_prices_details">No desesperes, seguro en momentos te asignaran la tarea</string>
+    <string name="str_verify_connection">comprueba tu conexión\n a internet</string>
+    <string name="str_verify_connection_server">Si el problema persiste contacte a soporte técnico de la app</string>
+    <string name="str_error_internet">Estamos presentando problemas de conexión por causas del internet, por favor inténtelo de nuevo</string>
+    <string name="str_unknow_rest_error">Error de comunicación desconocido</string>
+    <string name="str_unknow_validate_mnessage_error">Error desconocido</string>
+    <string name="str_error_app">Error interno de la app, inténtelo de nuevo, si el problema persiste contacte al proveedor de la applicación</string>
+    <string name="str_error_sesion">Se ha iniciado sesión en otro dispositivo con su cuenta, le recomendamos iniciar sesión de nuevo, recuerde que las sesiones multiples no estan permitidas</string>
+    <string name="str_error_uploading_file">Error al subir la firma, causado por:</string>
+    <string name="str_error_quantity">La cantidad debe ser mayor o igual a la requerida</string>
+
+    <string name="msg_orders_list">Ordenes agrupadas por feCHa de entrega</string>
+    <string name="msg_provider_list">Items agrupados por proveedor</string>
+
+    <string name="blank_2_string_ss">%s - %s</string>
+    <string name="blank_2_string_ns">%s%s</string>
+    <string name="blank_2_string_s">%s %s</string>
+    <string name="blank_soles">S/%.2f</string>
+    <string name="blank_decimal">%.2f</string>
+    <string name="blank_not_found">No se encontró \"%s\"</string>
+
+    <!--Disposition Money-->
+    <string name="str_personal">Personal</string>
+    <string name="str_btn_payment">Proceder al Pago</string>
+    <string name="hint_fullname">Nombres y Apellidos</string>
+    <string name="hint_email">Correo</string>
+    <string name="hint_cel">Número celular</string>
+    <string name="hint_amount">Monto a extraer</string>
+    <string name="hint_card_number">Número de Tarjeta</string>
+    <string name="hint_expiration_date">Fecha de Espiración</string>
+    <string name="hint_csv">CSV</string>
+    <string name="hint_account_number">Número de Cuenta</string>
+    <string name="hint_cant">Monto</string>
+    <string name="hint_change">Cambio + Interés</string>
+    <string name="hint_bank">Seleccionar Banco</string>
+
+
+
+    <string name="hint_password">Contraseña</string>
+    <string name="str_btn_ready">Listo</string>
+    <string name="str_btn_next">Siguiente</string>
+    <string name="str_disposition_money">Disposición Efectivo</string>
+    <string name="str_credit_evaluation">Evaluación Crediticia</string>
+    <string name="str_change_money">Cambio y Venta</string>
+    <string name="str_register">Registrarse</string>
+    <string name="str_login">Login</string>
+    <string name="str_welcome">Bienvenido</string>
+    <string name="str_birthday_date">Fecha de Nacimiento</string>
+    <string name="str_dni">DNI</string>
+    <string name="str_enter">Ingresar</string>
+    <string name="str_finalize">Finalizar</string>
+    <string name="str_confirmation">Confirmación de Número de Cuenta</string>
+    <string name="str_verify">Verifica el Número de Cuenta ingresado</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_ok">OK</string>
+    <string name="str_valid_process">Proceso Válida</string>
+    <string name="str_back_home">Regresar al Home</string>
+    <string name="str_change_sale">Cambio y Venta</string>
+    <string name="str_buy">Compra:</string>
+    <string name="str_sale">Venta:</string>
+    <string name="str_buy_btn">Compra</string>
+    <string name="str_sale_btn">Venta</string>
+    <string name="str_choice_method">Elige uno de nuestros métodos</string>
+    <string name="str_process_change">Procesar Cambio</string>
+    <string name="str_bank_accounts">Visualiza nuestras cuentas bancarias para el depósito manual</string>
+    <string name="str_bank_accounts_btn">Ver Cuentas Bancarias</string>
+    <string name="str_fill_in_form">Si realizaste el depósito, llena los siguientes datos y listo</string>
+    <string name="str_boucher_photo">Tomar foto al Boucher</string>
+    <string name="str_saving_account">Cuenta Ahorro</string>
+    <string name="str_current_account">Cuenta Corriente</string>
+    <string name="str_make_change">Realizar el Cambio</string>
+    <string name="str_deposit_description">Deposita tu monto en uno de los bancos para nosotros poder realizar el deposito del cambio</string>
+    <string name="str_title_slide_1">100% Virtual</string>
+    <string name="str_description_slide_1">Somos agencia financiera virtual que
+    ofrece tres servicios innovadores y
+        100% seguros.</string>
+    <string name="str_title_slide_2">Disposición de efectivo</string>
+    <string name="str_description_slide_2">Retira el efectivo contra las lineas de tus tarjetas de
+    crédito de manera rápida y a una tasa insuperable</string>
+    <string name="str_title_slide_3">Evaluación Crediticia</string>
+    <string name="str_description_slide_3">Envía tu prestamo y comprueba que bancos te lo aprueban
+    en cuestión de minutos</string>
+    <string name="str_title_slide_4">Compra y Venta</string>
+    <string name="str_title_evaluation">Bancos con los que trabajamos</string>
+    <string name="str_send_request">Enviar Solicitud</string>
+
 </resources>

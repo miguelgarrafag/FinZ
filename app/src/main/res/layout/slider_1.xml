@@ -4,37 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SliderFragment"
+    tools:context=".fragment.SliderFragment"
     android:orientation="vertical"
     android:background="@drawable/drawable_gradient_blue"
-    android:gravity="center"
-    >
+    android:gravity="top">
+
     <ImageView
         android:id="@+id/fragment_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/img_slide_1"
+        android:layout_marginTop="120dp"
+        android:contentDescription="@string/app_name"/>
+
     <TextView
         android:id="@+id/fragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_gravity="center"
-        android:text="Titulo 1"
+        android:text="@string/str_title_slide_1"
         android:layout_marginTop="30dp"
-        android:textSize="28dp"
-        />
+        android:textSize="28sp"
+        android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/fragment_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_gravity="center"
-        android:text="Lorep Ipsum sdfjads fadsfa adsf asdf asd fa sdfdasf asdf asdf"
-        android:padding="30dp"
+        android:text="@string/str_description_slide_1"
+        android:paddingTop="30dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:gravity="center"
-        android:textSize="14dp"
-        />
+        android:textSize="18sp"/>
 
 </LinearLayout>
