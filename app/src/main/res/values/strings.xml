@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinZ</string>
+    <string name="app_name">zeta</string>
 
     <string name="register">REGISTRATE</string>
     <string name="login">INGRESA</string>
@@ -89,6 +89,9 @@
 
 
     <string name="hint_password">Contraseña</string>
+    <string name="hint_actual_password">Actual Contraseña</string>
+    <string name="hint_new_password">Nueva Contraseña</string>
+    <string name="hint_confirm_password">Repetir Contraseña</string>
     <string name="str_btn_ready">Listo</string>
     <string name="str_btn_next">Siguiente</string>
     <string name="str_disposition_money">Disposición Efectivo</string>
@@ -123,17 +126,12 @@
     <string name="str_make_change">Realizar el Cambio</string>
     <string name="str_deposit_description">Deposita tu monto en uno de los bancos para nosotros poder realizar el deposito del cambio</string>
     <string name="str_title_slide_1">100% Virtual</string>
-    <string name="str_description_slide_1">Somos agencia financiera virtual que
-    ofrece tres servicios innovadores y
-        100% seguros.</string>
-    <string name="str_title_slide_2">Disposición de efectivo</string>
-    <string name="str_description_slide_2">Retira el efectivo contra las lineas de tus tarjetas de
-    crédito de manera rápida y a una tasa insuperable</string>
-    <string name="str_title_slide_3">Evaluación Crediticia</string>
-    <string name="str_description_slide_3">Envía tu prestamo y comprueba que bancos te lo aprueban
-    en cuestión de minutos</string>
-    <string name="str_title_slide_4">Compra y Venta</string>
+    <string name="str_description_slide_1">Somos agencia financiera virtual que ofrece tres servicios innovadores y 100% seguros.</string>
     <string name="str_title_evaluation">Bancos con los que trabajamos</string>
     <string name="str_send_request">Enviar Solicitud</string>
-
+    <string name="str_change_password">Cambiar contraseña</string>
+    <string name="str_my_operation">Mis Operaciones</string>
+    <string name="str_see_all">ver todo</string>
+    <string name="str_security">*De preferencia utilice letras mayúsculas y/o números para mayor
+    seguridad</string>
 </resources>

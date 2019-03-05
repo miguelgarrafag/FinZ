@@ -8,6 +8,9 @@ public class RestConstant {
     public static final String BEARER = "Bearer ";
     public static final String AUTHORIZATION = "Authorization";
 
+    public static final String ALT = "?alt=media";
+    public static final String SLIDERS = "sliders%2F";
+
     private static final String V1 = "/rest/v1";
     private static final String PUBLIC = V1 + "/public";
 

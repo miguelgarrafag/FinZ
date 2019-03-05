@@ -5,19 +5,15 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.finz.R;
 import com.finz.RestDinamicConstant;
 import com.finz.rest.RestConstant;
-import com.finz.rest.RestConverter;
 import com.finz.rest.RestDeserializer;
-import com.finz.rest.RestListener;
+import com.finz.rest.RestListListener;
 import com.finz.rest.slider.entity.Slider;
 import com.google.gson.Gson;
-
-import java.util.Map;
 
 import javax.inject.Singleton;
 
@@ -35,23 +31,17 @@ public class RestSliderImpl implements RestSlider {
     }
 
     @Override
-    public void list(final String refreshToken, final RestListener<Slider> listener) {
-        StringRequest req = new StringRequest(
-                Request.Method.GET,
+    public void list(final RestListListener<Slider> listener) {
+        JsonArrayRequest req = new JsonArrayRequest(
                 RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_SLIDER,
-                response -> listener.onSuccess(RestDeserializer.SliderDeserializer.Slider(response, gson)),
+                response -> listener.onSuccess(RestDeserializer.SliderDeserializer.Sliders(response, gson)),
                 error -> {
                     if (error.networkResponse!=null)
                         listener.onError(error.networkResponse.statusCode, error.getMessage());
                     else
                         toast.show();
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams() {
-                return RestConverter.Token.requestRefreshToken(refreshToken);
-            }
-        };
+        );
         req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);

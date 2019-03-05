@@ -137,8 +137,13 @@ public class UtilCore {
     public static class UtilNetwork {
         public static boolean isNetworkAvailable(Context context) {
             ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
-            return activeNetworkInfo == null || !activeNetworkInfo.isConnected();
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+            if(activeNetworkInfo != null && activeNetworkInfo.isConnected()){
+                return true;
+            }else {
+                return false;
+            }
         }
     }
 

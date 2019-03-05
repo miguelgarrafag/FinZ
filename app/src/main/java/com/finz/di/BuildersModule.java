@@ -7,8 +7,8 @@ import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.InformationDispositionActivity;
 import com.finz.activity.ListAccountActivity;
 import com.finz.activity.PrincipalActivity;
-import com.finz.activity.MainActivity;
 import com.finz.activity.MenuActivity;
+import com.finz.activity.ProfileActivity;
 import com.finz.activity.SliderActivity;
 import com.finz.activity.ValidProcessActivity;
 
@@ -19,9 +19,6 @@ import dagger.android.ContributesAndroidInjector;
 abstract class BuildersModule {
 
     //ACTIVITIES
-    @ContributesAndroidInjector()
-    abstract MainActivity bindMainActivity();
-
     @ContributesAndroidInjector(modules = {FragmentBuilderModule.class})
     abstract PrincipalActivity bindPrincipalActivity();
 
@@ -51,4 +48,8 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector()
     abstract CreditEvaluationActivity bindCreditEvaluationActivity();
+
+    @ContributesAndroidInjector()
+    abstract ProfileActivity bindProfileActivity();
+
 }

@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.finz.FinZApp;
+import com.finz.rest.slider.RestSlider;
+import com.finz.rest.slider.RestSliderImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -22,7 +24,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class AppModule {
+class AppModule {
 
     @Provides
     Context provideContext(FinZApp app) {
@@ -60,5 +62,10 @@ public class AppModule {
     @Provides
     RestFirebaseToken provideRestFirebaseToken(RequestQueue queue, Context ctx){
         return new RestFirebaseTokenImpl(queue,ctx);
+    }
+
+    @Provides
+    RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx){
+        return new RestSliderImpl(queue, gson, ctx);
     }
 }

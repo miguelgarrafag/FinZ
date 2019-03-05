@@ -14,6 +14,8 @@ public class ApplicationPreferences {
     private static final String KEY_FIREBASE_TOKEN_ID = "firebase_token_id";
     private static final String KEY_FIREBASE_TOKEN_STATUS = "firebase_token_status";
 
+    private static final String KEY_SLIDERS = "sliders";
+
     private SharedPreferences prefs;
     private Gson gson;
 
@@ -21,6 +23,15 @@ public class ApplicationPreferences {
         prefs = ctx.getSharedPreferences("appPreference", Context.MODE_PRIVATE);
         gson = new Gson();
     }
+
+    public void setSliders(boolean val) {
+        prefs.edit().putBoolean(KEY_SLIDERS, val).apply();
+    }
+
+    public boolean getSliders() {
+        return prefs.getBoolean(KEY_SLIDERS,false);
+    }
+
 
     public void setFirebaseToken(String token) {
         prefs.edit().putString(KEY_FIREBASE_TOKEN, token).apply();

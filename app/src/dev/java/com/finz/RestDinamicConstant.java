@@ -1,8 +1,8 @@
 package com.finz;
 
 public class RestDinamicConstant {
-    public static final String URL_BASE = "http://35.164.14.176:8080";
-    public static final String CLIENT_ID = "td6bvwPIsRyykLhmYin9ToD8uJJmcgnVBoPacnl2";
-    public static final String CLIENT_SECRET = "o2YmuKkE9q8hgg9wywRq0USE1KQrBaLJcF4q9zyiE69saEkfMN";
-    public static final String TOPIC = "main";
+    public static final String URL_BASE = "http://18.222.100.94";
+    public static final String URL_IMAGES = "https://firebasestorage.googleapis.com/v0/b/finz-6a4b9.appspot.com/o/dev%2F";
+    public static final String CLIENT_ID = "android_client";
+    public static final String CLIENT_SECRET = "123456";
 }

@@ -7,8 +7,12 @@ import com.google.gson.Gson;
 import com.finz.rest.firebaseToken.entity.FirebaseToken;
 import com.finz.rest.token.entity.Token;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestDeserializer {
 
@@ -36,8 +40,17 @@ public class RestDeserializer {
 
     public static class SliderDeserializer {
 
-        public static Slider Slider(String response, Gson gson) {
-            return gson.fromJson(response, Slider.class);
+        public static List<Slider> Sliders(JSONArray response, Gson gson) {
+            try {
+                List<Slider> result = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    result.add(gson.fromJson(response.getJSONObject(i).toString(), Slider.class));
+                }
+                return result;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
         }
     }
 

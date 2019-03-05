@@ -14,6 +14,8 @@
     <color name="colorBubbleUserEnd">#3FCAFC</color>
     <color name="colorBackgroundInit">#74E4FF</color>
     <color name="colorBackgroundEnd">#A0AEFF</color>
+    <color name="colorSplashInit">#0085dc</color>
+    <color name="colorSplashEnd">#00d5ff</color>
 
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>

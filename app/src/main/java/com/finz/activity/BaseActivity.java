@@ -87,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         if(statusCode==401) {
                             showToastLong(R.string.str_error_sesion);
                             prefs.clearall();
-                            startActivity(new Intent(BaseActivity.this, MainActivity.class));
+                            startActivity(new Intent(BaseActivity.this, MenuActivity.class));
                             finish();
                         }else
                             showToastLong(getString(R.string.blank_2_string_ss, getString(R.string.str_error_app), TAG));
