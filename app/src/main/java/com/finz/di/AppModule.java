@@ -7,6 +7,8 @@ import com.android.volley.toolbox.Volley;
 import com.finz.FinZApp;
 import com.finz.rest.slider.RestSlider;
 import com.finz.rest.slider.RestSliderImpl;
+import com.finz.rest.user.RestUser;
+import com.finz.rest.user.RestUserImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -67,5 +69,10 @@ class AppModule {
     @Provides
     RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx){
         return new RestSliderImpl(queue, gson, ctx);
+    }
+
+    @Provides
+    RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx){
+        return new RestUserImpl(queue, gson, ctx);
     }
 }

@@ -30,21 +30,20 @@ public class RestConverter {
         }
     }
 
-    public static class Order {
-        private static final String KEY_ID = "id";
-        private static final String KEY_PRODUCTS_ID = "products_id";
-        private static final String KEY_PRICE = "price";
-        private static final String KEY_QUANTITY = "quantity";
-        private static final String KEY_COMMENT = "comment";
-        private static final String KEY_CODE = "code";
-        private static final String KEY_PRODUCT_PACKED = "product_packed";
+    public static class User {
+        private static final String KEY_EMAIL = "email";
+        private static final String KEY_PASSWORD = "password";
+        private static final String KEY_NAME = "name";
+        private static final String KEY_LAST_NAME = "lastName";
+        private static final String KEY_PHONE = "phone";
+        private static final String KEY_DNI = "dni";
+        private static final String KEY_OLD_PASS = "oldPass";
+        private static final String KEY_NEW_PASS = "newPass";
 
-        public static JSONObject priceQuantity(long id, BigDecimal price, BigDecimal quantity) {
+        public static JSONObject resetPass(String email) {
             try {
                 JSONObject obj = new JSONObject();
-                obj.put(KEY_ID, id);
-                obj.put(KEY_PRICE, price.doubleValue());
-                obj.put(KEY_QUANTITY, quantity.doubleValue());
+                obj.put(KEY_EMAIL, email);
                 return obj;
             } catch (JSONException ex) {
                 Log.w(TAG, ex.getMessage());
@@ -52,11 +51,11 @@ public class RestConverter {
             }
         }
 
-        public static JSONObject price(long id, BigDecimal price) {
+        public static JSONObject changePass(String oldPass, String newPass) {
             try {
                 JSONObject obj = new JSONObject();
-                obj.put(KEY_PRODUCTS_ID, id);
-                obj.put(KEY_PRICE, price.doubleValue());
+                obj.put(KEY_OLD_PASS, oldPass);
+                obj.put(KEY_NEW_PASS, newPass);
                 return obj;
             } catch (JSONException ex) {
                 Log.w(TAG, ex.getMessage());
@@ -64,53 +63,22 @@ public class RestConverter {
             }
         }
 
-        public static JSONObject quantity(long id, BigDecimal quantity) {
+        public static JSONObject register(String email, String password, String name,
+                                          String lastName, String phone, String dni) {
             try {
                 JSONObject obj = new JSONObject();
-                obj.put(KEY_ID, id);
-                obj.put(KEY_QUANTITY, quantity.doubleValue());
+                obj.put(KEY_EMAIL, email);
+                obj.put(KEY_PASSWORD, password);
+                obj.put(KEY_NAME, name);
+                obj.put(KEY_LAST_NAME, lastName);
+                obj.put(KEY_PHONE, phone);
+                obj.put(KEY_DNI, dni);
                 return obj;
             } catch (JSONException ex) {
                 Log.w(TAG, ex.getMessage());
                 return null;
             }
         }
-
-        public static JSONObject deliveryFinished(String code) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put(KEY_CODE, code);
-                return obj;
-            } catch (JSONException ex) {
-                Log.w(TAG, ex.getMessage());
-                return null;
-            }
-        }
-
-        public static JSONObject comment(long id, String comment) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put(KEY_ID, id);
-                obj.put(KEY_COMMENT, comment);
-                return obj;
-            } catch (JSONException ex) {
-                Log.w(TAG, ex.getMessage());
-                return null;
-            }
-        }
-
-        public static JSONObject check(long id, boolean val) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put(KEY_ID, id);
-                obj.put(KEY_PRODUCT_PACKED, val);
-                return obj;
-            } catch (JSONException ex) {
-                Log.w(TAG, ex.getMessage());
-                return null;
-            }
-        }
-
     }
 
     public static class Token {

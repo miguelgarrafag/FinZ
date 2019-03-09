@@ -24,12 +24,13 @@ public class MenuActivity extends BaseActivity {
 
     @OnClick(R.id.button_disposition)
     public void disposition() {
-        startActivity(new Intent(this, PrincipalActivity.class));
+        startActivity(new Intent(this, DispositionMoneyActivity.class));
     }
 
     @OnClick(R.id.btn_change_money)
     public void change() {
-        startActivity(new Intent(this, ChangeMoneyActivity.class));
+        /*startActivity(new Intent(this, ChangeMoneyActivity.class));*/
+        showToastLong(R.string.str_soon);
     }
 
     @OnClick(R.id.btn_credit_evaluation)

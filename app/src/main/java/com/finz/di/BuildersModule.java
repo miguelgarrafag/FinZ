@@ -6,7 +6,7 @@ import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.InformationDispositionActivity;
 import com.finz.activity.ListAccountActivity;
-import com.finz.activity.PrincipalActivity;
+import com.finz.activity.LoginRegisterActivity;
 import com.finz.activity.MenuActivity;
 import com.finz.activity.ProfileActivity;
 import com.finz.activity.SliderActivity;
@@ -20,7 +20,7 @@ abstract class BuildersModule {
 
     //ACTIVITIES
     @ContributesAndroidInjector(modules = {FragmentBuilderModule.class})
-    abstract PrincipalActivity bindPrincipalActivity();
+    abstract LoginRegisterActivity bindPrincipalActivity();
 
     @ContributesAndroidInjector()
     abstract MenuActivity bindMenuActivity();

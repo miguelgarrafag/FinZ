@@ -1,6 +1,10 @@
 package com.finz.constant;
 
 public class ConstantsCore {
+    public static class Utilities {
+        public static final int ZERO = 0;
+    }
+
     public static class HttpStatus {
         public static final int NOT_FOUND = 404;
         public static final int CONFLICT = 409;

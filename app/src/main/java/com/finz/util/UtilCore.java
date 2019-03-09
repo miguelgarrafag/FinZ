@@ -1,11 +1,14 @@
 package com.finz.util;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -15,6 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.finz.R;
+import com.finz.constant.ConstantsCore;
 import com.finz.listener.DialogListener;
 
 import java.io.UnsupportedEncodingException;
@@ -63,10 +67,18 @@ public class UtilCore {
             return lp;
         }
 
+        public static LinearLayout.LayoutParams getParamsEmail(){
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.weight = 1.0f;
+            lp.setMargins(100, 0, 100, 0);
+            lp.gravity = Gravity.CENTER;
+            return lp;
+        }
+
         public static void showCustomDialog(Context context, int title, View input, DialogListener negativeListener, DialogListener positiveListener){
             LinearLayout container = new LinearLayout(context);
             container.addView(input);
-            AlertDialog.Builder b = new AlertDialog.Builder(context)
+            AlertDialog.Builder b = new AlertDialog.Builder(context, R.style.AlertDialogCustom)
                     .setView(container)
                     .setTitle(context.getString(title))
                     .setCancelable(false)
@@ -92,12 +104,28 @@ public class UtilCore {
             dialog.show();
         }
 
+        public static void showCustomDialog(Context context, int title, int msg, View input){
+            LinearLayout container = new LinearLayout(context);
+            container.addView(input);
+
+            AlertDialog.Builder b = new AlertDialog.Builder(context, R.style.AlertDialogCustom)
+                    .setView(container)
+                    .setTitle(context.getString(title))
+                    .setMessage(context.getString(msg))
+                    .setCancelable(true);
+
+
+            AlertDialog dialog = b.create();
+
+            dialog.show();
+        }
+
         public static void showCustomDialog(Context context, int title, View input, View input2, DialogListener negativeListener, DialogListener positiveListener){
             LinearLayout container = new LinearLayout(context);
             container.setOrientation(LinearLayout.VERTICAL);
             container.addView(input);
             container.addView(input2);
-            AlertDialog.Builder b = new AlertDialog.Builder(context)
+            AlertDialog.Builder b = new AlertDialog.Builder(context, R.style.AlertDialogCustom)
                     .setView(container)
                     .setTitle(context.getString(title))
                     .setCancelable(false)
@@ -126,10 +154,59 @@ public class UtilCore {
             dialog.show();
         }
 
+        public static void showCustomDialog(Context context, int title, int msg, View input, View input2, View input3, DialogListener negativeListener, DialogListener positiveListener){
+            LinearLayout container = new LinearLayout(context);
+            container.setOrientation(LinearLayout.VERTICAL);
+            container.addView(input);
+            container.addView(input2);
+            container.addView(input3);
+
+            AlertDialog.Builder b = new AlertDialog.Builder(context, R.style.AlertDialogCustom)
+                    .setView(container)
+                    .setTitle(title)
+                    .setMessage(context.getString(msg))
+                    .setCancelable(false)
+                    .setNegativeButton(context.getString(R.string.label_cancel), (dialog, which) -> negativeListener.onListener())
+                    .setPositiveButton(context.getString(R.string.label_ok),  null);
+
+            AlertDialog dialog = b.create();
+            Objects.requireNonNull(dialog.getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+            dialog.setOnShowListener(dialog1 -> {
+                Button button = ((AlertDialog) dialog1).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setOnClickListener(v -> {
+                    EditText e = (EditText) input;
+                    EditText e2 = (EditText) input2;
+                    EditText e3 = (EditText) input3;
+                    if(e.getText().toString().isEmpty())
+                        e.setError(context.getString(R.string.str_error_empty));
+                    else if(e2.getText().toString().isEmpty())
+                        e2.setError(context.getString(R.string.str_error_empty));
+                    else if(e3.getText().toString().isEmpty())
+                        e3.setError(context.getString(R.string.str_error_empty));
+                    else {
+                        positiveListener.onListener();
+                        dialog1.dismiss();
+                    }
+                });
+            });
+            dialog.show();
+        }
+
         public static void showCustomDialog(Context context, int title, String msg){
-            new AlertDialog.Builder(context)
+            new AlertDialog.Builder(context, R.style.AlertDialogCustom)
                     .setTitle(context.getString(title))
                     .setMessage(msg)
+                    .show();
+        }
+
+        public static void showCustomDialog(Context context, int title, String msg, DialogListener negativeListener, DialogListener positiveListener){
+            new AlertDialog.Builder(context, R.style.AlertDialogCustom)
+                    .setTitle(context.getString(title))
+                    .setMessage(msg)
+                    .setCancelable(false)
+                    .setNegativeButton(context.getString(R.string.label_cancel), (dialog, which) -> negativeListener.onListener())
+                    .setPositiveButton(context.getString(R.string.label_ok),  (dialog, which) -> positiveListener.onListener())
                     .show();
         }
     }
@@ -151,6 +228,16 @@ public class UtilCore {
 
         @SuppressLint("SimpleDateFormat")
         public static SimpleDateFormat dateFormatService = new SimpleDateFormat("dd/MM/yyyy");
+
+        public static void showDateDialog(Context ctx, TextInputEditText edit, TextInputEditText next) {
+            new DatePickerDialog(Objects.requireNonNull(ctx), (view, year, month, dayOfMonth) -> {
+                final int mesActual = month + 1;
+                String day = (dayOfMonth < 10)? ConstantsCore.Utilities.ZERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
+                String monthS = (mesActual < 10)? ConstantsCore.Utilities.ZERO + String.valueOf(mesActual):String.valueOf(mesActual);
+                edit.setText(ctx.getString(R.string.blank_date, day, monthS, year));
+                next.requestFocus();
+            },Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show();
+        }
 
         public static String formatDateNoYear(Context context, Date date) {
             Calendar c = Calendar.getInstance();

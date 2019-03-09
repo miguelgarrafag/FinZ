@@ -15,7 +15,7 @@
         android:layout_height="250dp"
         android:layout_gravity="center"
         android:src="@drawable/img_slide_1"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/app_name"/>
 
     <TextView

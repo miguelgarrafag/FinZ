@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#DEDFE2</color>
     <color name="colorAccent">#0D91FC</color>
+    <color name="colorAccentTransparent">#6A0D91FC</color>
     <color name="colorAccentEnd">#12ADFD</color>
 
     <color name="colorShadow">#D1EBFF</color>
@@ -18,6 +19,7 @@
     <color name="colorSplashEnd">#00d5ff</color>
 
     <color name="colorWhite">#FFF</color>
+    <color name="colorCream">#FAFAFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorGray">#BFC1C6</color>
     <color name="colorGrayDark">#757575</color>

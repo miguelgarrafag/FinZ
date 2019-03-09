@@ -2,6 +2,7 @@ package com.finz.rest.token;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Base64;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -17,6 +18,7 @@ import com.finz.rest.RestDeserializer;
 import com.finz.rest.RestListener;
 import com.finz.rest.token.entity.Token;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Singleton;
@@ -51,6 +53,17 @@ public class RestTokenImpl implements RestToken {
             protected Map<String, String> getParams() {
                 return RestConverter.Token.requestRefreshToken(refreshToken);
             }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                params.put(RestConstant.CONTENT_TYPE, RestConstant.APPLICATION_FORM);
+                String creds = String.format(RestConstant.FORMAT, RestDinamicConstant.CLIENT_ID,
+                        RestDinamicConstant.CLIENT_SECRET);
+                String auth = RestConstant.BASIC + Base64.encodeToString(creds.getBytes(), Base64.NO_WRAP);
+                params.put(RestConstant.AUTHORIZATION, auth);
+                return params;
+            }
         };
         req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -74,6 +87,17 @@ public class RestTokenImpl implements RestToken {
             @Override
             protected Map<String, String> getParams() {
                 return RestConverter.Token.requestAccessToken(email, password);
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                params.put(RestConstant.CONTENT_TYPE, RestConstant.APPLICATION_FORM);
+                String creds = String.format(RestConstant.FORMAT, RestDinamicConstant.CLIENT_ID,
+                        RestDinamicConstant.CLIENT_SECRET);
+                String auth = RestConstant.BASIC + Base64.encodeToString(creds.getBytes(), Base64.NO_WRAP);
+                params.put(RestConstant.AUTHORIZATION, auth);
+                return params;
             }
         };
         req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
