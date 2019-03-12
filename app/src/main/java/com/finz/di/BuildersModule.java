@@ -4,6 +4,8 @@ import com.finz.activity.ChangeMoneyActivity;
 import com.finz.activity.CreditEvaluationActivity;
 import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
+import com.finz.activity.DispositionMoneyFinishActivity;
+import com.finz.activity.DispositionMoneyLastActivity;
 import com.finz.activity.InformationDispositionActivity;
 import com.finz.activity.ListAccountActivity;
 import com.finz.activity.LoginRegisterActivity;
@@ -20,7 +22,7 @@ abstract class BuildersModule {
 
     //ACTIVITIES
     @ContributesAndroidInjector(modules = {FragmentBuilderModule.class})
-    abstract LoginRegisterActivity bindPrincipalActivity();
+    abstract LoginRegisterActivity bindLoginRegisterActivity();
 
     @ContributesAndroidInjector()
     abstract MenuActivity bindMenuActivity();
@@ -30,6 +32,12 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector()
     abstract DispositionMoneyActivity bindDispositionMoneyActivity();
+
+    @ContributesAndroidInjector()
+    abstract DispositionMoneyLastActivity bindDispositionMoneyLastActivity();
+
+    @ContributesAndroidInjector()
+    abstract DispositionMoneyFinishActivity bindDispositionMoneyFinishActivity();
 
     @ContributesAndroidInjector()
     abstract InformationDispositionActivity bindInformationDispositionActivity();

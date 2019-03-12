@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.storage.FirebaseStorage;
 import com.mobsandgeeks.saripaar.Validator;
 import com.finz.R;
 import com.finz.aplication.ApplicationPreferences;
@@ -33,6 +35,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     RestToken restToken;
 
     protected ProgressDialog dialog;
+    protected FirebaseRemoteConfig firebaseRemoteConfig;
+    public FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         validator = new Validator(this);
+        firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        storage = FirebaseStorage.getInstance();
     }
 
     protected void showDialog() {

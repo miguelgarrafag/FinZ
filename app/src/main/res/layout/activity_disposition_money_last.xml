@@ -42,7 +42,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_personal"
+                    android:text="@string/str_other_count"
                     android:textColor="@color/colorGrayDark"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -52,51 +52,10 @@
                     android:layout_height="match_parent">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/cost"
+                        android:id="@+id/name_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_amount"
-                        android:textSize="14sp"
-                        android:inputType="numberDecimal"
-                        style="@style/CustomTextInputEditText"/>
-
-                </android.support.design.widget.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/commission"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="@string/hint_cost"/>
-
-                    <TextView
-                        android:id="@+id/commission_cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/colorBlack"
-                        android:text="@string/zero"/>
-
-                </LinearLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/bank"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_bank"
-                        android:focusable="false"
+                        android:hint="@string/hint_name_card"
                         android:textSize="14sp"
                         android:inputType="text"
                         style="@style/CustomTextInputEditText"/>
@@ -108,12 +67,43 @@
                     android:layout_height="match_parent">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/count_number"
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_account_number"
+                        android:hint="@string/hint_email"
                         android:textSize="14sp"
-                        android:inputType="numberSigned"
+                        android:inputType="textEmailAddress"
+                        style="@style/CustomTextInputEditText"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_cel"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:maxLength="9"
+                        style="@style/CustomTextInputEditText"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/card_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_card_number"
+                        android:textSize="14sp"
+                        android:maxLength="16"
                         style="@style/CustomTextInputEditText"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -122,43 +112,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    tools:ignore="UselessLeaf">
+                    tools:ignore="DisableBaselineAlignment">
 
-                    <Button
-                        android:id="@+id/saving"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:background="@drawable/drawable_border_button_blue"
-                        android:text="@string/str_saving_account"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:textColor="@color/colorWhite"
-                        tools:ignore="ButtonStyle" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
-                    <Button
-                        android:id="@+id/corrent"
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:layout_marginStart="5dp"
-                        android:background="@drawable/drawable_border_button_gray"
-                        android:text="@string/str_current_account"
-                        android:textAllCaps="false"
-                        android:textSize="14sp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/colorGray"
-                        tools:ignore="ButtonStyle" />
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/month"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_expiration_date"
+                            android:maxLength="5"
+                            android:textSize="14sp"
+                            android:inputType="date"
+                            style="@style/CustomTextInputEditText"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/csv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_csv"
+                            android:textSize="14sp"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            style="@style/CustomTextInputEditText"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
@@ -168,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/selector_button"
-                    android:text="@string/next"
+                    android:text="@string/str_btn_payment"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"

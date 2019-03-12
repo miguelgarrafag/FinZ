@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.finz">
 
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -22,6 +24,8 @@
         <activity android:name=".activity.LoginRegisterActivity"
             android:theme="@style/CustomTheme"/>
         <activity android:name=".activity.DispositionMoneyActivity"/>
+        <activity android:name=".activity.DispositionMoneyLastActivity"/>
+        <activity android:name=".activity.DispositionMoneyFinishActivity"/>
         <activity android:name=".activity.InformationDispositionActivity" />
         <activity android:name=".activity.ValidProcessActivity"/>
         <activity android:name=".activity.ChangeMoneyActivity"/>
@@ -38,6 +42,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.finz.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path"/>
+        </provider>
+
     </application>
 
 </manifest>

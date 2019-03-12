@@ -35,10 +35,12 @@ public class ConstantsCore {
 
     public static class FStorage {
         public static final String SIGNATURE_FOLDER = "signature/";
+        public static final String DNI_FOLDER = "dni/";
     }
 
     public static class LocalStorage {
         public static final String SIGNATURE = "signature";
+        public static final String DNI = "dni";
     }
 
     public static class Service {

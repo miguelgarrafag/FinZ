@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">zeta</string>
+    <string name="app_name">NotBank</string>
 
     <string name="register">Regístrate</string>
     <string name="login">Ingresa</string>
@@ -7,6 +7,7 @@
     <string name="finish">Finalizar</string>
     <string name="next">Siguiente</string>
     <string name="warning">Advertencia</string>
+    <string name="zero">0.00</string>
 
     <string name="disposition_money">Disposición Efectivo</string>
     <string name="credit_evaluation">Evaluación Crediticia</string>
@@ -18,7 +19,8 @@
 
     <string name="dialog_help">Necesito Ayuda</string>
     <string name="dialog_help_msg">Si tienes dudas o inquietudes, por favor comunicate con nosotros s nuestra central:</string>
-    <string name="dialog_help_email"><![CDATA[<u>clozano@sudtechnologies.com</u>]]></string>
+    <string name="dialog_help_email"><![CDATA[<u>%s</u>]]></string>
+    <string name="dialog_help_email_info">clozano@sudtechnologies.com</string>
     <string name="dialog_change_price">Nuevo Precio de Compra</string>
     <string name="dialog_purchased_count">Ingrese la cantidad comprada</string>
     <string name="dialog_change_quantity_delivered">Cantidad a embolsar</string>
@@ -45,6 +47,11 @@
     <string name="label_delivery">Delivery</string>
     <string name="label_purchase_detail_info">Detalles de la venta</string>
 
+    <string name="str_take_pic">Tomar Foto</string>
+    <string name="str_take_pic_info">Por seguridad, tomate una foto junto a tu DNI</string>
+    <string name="str_signature">Realizar Firma</string>
+    <string name="str_signature_info">La Firma es necesaria en cada trasacción emitida</string>
+    <string name="str_finish_proccess">Finalizar Proceso</string>
     <string name="str_login_failed">El correo o contraseña son incorrectos</string>
     <string name="str_login_email_valid">Ingrese su correo</string>
     <string name="str_login_email_format">Ingrese un correo válido</string>
@@ -52,6 +59,7 @@
     <string name="str_error_empty">Campo vacio</string>
     <string name="str_oh_no">Oh, no!</string>
     <string name="str_loading">Cargando…</string>
+    <string name="str_subject">Preguntas Zeta (Android)</string>
     <string name="str_lose_pass_ok">Su nueva contraseña llegará en minutos a su correo</string>
     <string name="str_no_items">Sin items aún</string>
     <string name="str_no_orders">Sin ordenes aún</string>
@@ -83,8 +91,11 @@
     <string name="blank_not_found">No se encontró \"%s\"</string>
 
     <!--Disposition Money-->
-    <string name="str_personal">Personal</string>
-    <string name="str_other_count">Otra Cuenta</string>
+    <string name="str_step_1">Paso 1</string>
+    <string name="str_step_2">Paso 2</string>
+    <string name="str_step_3">Paso 3</string>
+    <string name="str_personal">Cuenta Destino</string>
+    <string name="str_other_count">Datos de la Tarjeta</string>
     <string name="str_btn_payment">Proceder al Pago</string>
     <string name="hint_fullname">Nombres y Apellidos</string>
     <string name="hint_name_card">Nombre del titular de la tarjeta</string>
@@ -92,7 +103,8 @@
     <string name="hint_lastname">Apellido(s)</string>
     <string name="hint_email">Correo</string>
     <string name="hint_cel">Celular</string>
-    <string name="hint_amount">Monto a extraer (S/)</string>
+    <string name="hint_amount">Monto recibir (S/)</string>
+    <string name="hint_cost">Monto a Cobrar, %s adicional (S/):</string>
     <string name="hint_card_number">Número de Tarjeta</string>
     <string name="hint_expiration_date">MM/AA</string>
     <string name="hint_csv">CSV</string>
@@ -113,6 +125,13 @@
     <string name="str_validate_phone">No debe ser menor de 9 caracteres</string>
     <string name="str_register_validate_email_valid">Ingrese un correo válido</string>
     <string name="str_register_validate_phone">Ingrese su teléfono</string>
+    <string name="str_register_validate_bank">Seleccione un Banco</string>
+    <string name="str_register_validate_card_name">Ingrese el nombre del titular de la tarjeta</string>
+    <string name="str_register_validate_count">Ingrese el número de su cuenta</string>
+    <string name="str_register_validate_card">Ingrese su número de tarjeta</string>
+    <string name="str_register_validate_csv">Ingrese el reverso de su tarjeta</string>
+    <string name="str_register_validate_month">Ingrese la fecha de vencimiento</string>
+    <string name="str_register_validate_mount">Ingrese la cantidad a recibir</string>
     <string name="str_register_validate_name">Ingrese su nombre</string>
     <string name="srt_exist_email">El correo ingresado ya existe</string>
     <string name="str_register_validate_email_not_empty">Ingrese su correo</string>
@@ -121,7 +140,7 @@
     <string name="str_btn_ready">Listo</string>
     <string name="str_btn_next">Siguiente</string>
     <string name="str_logout_question">¿Seguro que desea cerrar sesión?</string>
-    <string name="str_disposition_money">Disposición Efectivo</string>
+    <string name="str_disposition_money">Efectivo Inmediato</string>
     <string name="str_credit_evaluation">Evaluación Crediticia</string>
     <string name="str_change_money">Cambio y Venta</string>
     <string name="str_soon">Muy pronto esta función estará disponible para todos los usuarios</string>
@@ -144,6 +163,7 @@
     <string name="str_buy_btn">Compra</string>
     <string name="str_sale_btn">Venta</string>
     <string name="str_choice_method">Elige uno de nuestros métodos</string>
+    <string name="str_choice_bank">Elige el banco en el cual reside el número de cuenta</string>
     <string name="str_process_change">Procesar Cambio</string>
     <string name="str_bank_accounts">Visualiza nuestras cuentas bancarias para el depósito manual</string>
     <string name="str_bank_accounts_btn">Ver Cuentas Bancarias</string>

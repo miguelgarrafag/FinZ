@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.finz.R;
@@ -48,7 +45,7 @@ public class ProfileActivity extends BaseActivity {
 
         if(prefs.getUser()==null){
             Intent intent = new Intent(this, LoginRegisterActivity.class);
-            intent.putExtra(LoginRegisterActivity.ACTIVITY, "E");
+            intent.putExtra(LoginRegisterActivity.ACTIVITY, "P");
             startActivity(intent);
             finish();
             return;
