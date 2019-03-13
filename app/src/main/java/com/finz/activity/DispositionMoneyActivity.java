@@ -1,7 +1,10 @@
 package com.finz.activity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +17,9 @@ import android.widget.TextView;
 
 import com.finz.R;
 import com.finz.adapter.ListBankNameAdapter;
+import com.finz.rest.RestListListener;
+import com.finz.rest.utils.RestUtil;
+import com.finz.rest.utils.entity.Bank;
 import com.finz.util.UtilCore;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
@@ -24,6 +30,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
@@ -31,10 +39,13 @@ import dagger.android.AndroidInjection;
 
 public class DispositionMoneyActivity extends BaseActivity implements Validator.ValidationListener{
 
-    public static final String KEY_COMMISION_VALUE = "commission_value";
-    public static final String KEY_COMMISION_MSG = "commission_msg";
-    public static final String KEY_BANK_LIST = "bank_list";
+    private static final String TAG = DispositionMoneyActivity.class.getSimpleName();
     public static final String KEY_BANK_EMAIL = "bank_email";
+    @SuppressLint("StaticFieldLeak")
+    public static Activity activity;
+
+    @Inject
+    RestUtil restUtil;
 
     @BindView(R.id.bank)
     @NotEmpty(messageResId = R.string.str_register_validate_bank)
@@ -63,12 +74,14 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     private double commission;
     private String email;
     private String bankType = "A";
-    private List<String> banks = new ArrayList<>();
+    private List<Bank> banks = new ArrayList<>();
+    private Bank bankS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
+        activity = this;
 
         if(prefs.getUser()==null){
             Intent intent = new Intent(this, LoginRegisterActivity.class);
@@ -96,13 +109,32 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     }
 
     private void getValues() {
-        Log.e(KEY_COMMISION_MSG, firebaseRemoteConfig.getString(KEY_COMMISION_MSG));
-        Log.e(KEY_COMMISION_VALUE, String.valueOf(firebaseRemoteConfig.getDouble(KEY_COMMISION_VALUE)));
-        commission = firebaseRemoteConfig.getDouble(KEY_COMMISION_VALUE);
-        String commissionMsg = firebaseRemoteConfig.getString(KEY_COMMISION_MSG);
+        commission = prefs.getParam().getDispPerc() / 100;
+        String commissionMsg = String.valueOf(prefs.getParam().getDispPerc());
         commissionV.setText(getString(R.string.hint_cost, commissionMsg));
         email = firebaseRemoteConfig.getString(KEY_BANK_EMAIL);
-        banks.addAll(UtilCore.UtilFunctions.getListRemoteConfig(firebaseRemoteConfig.getString(KEY_BANK_LIST)));
+        loadBanks();
+    }
+
+    private void loadBanks() {
+        if (!UtilCore.UtilNetwork.isNetworkAvailable(this)) {
+            showToastConnection();
+            return;
+        }
+        restUtil.banks(prefs.getToken().getAccessToken(),
+                new RestListListener<Bank>() {
+                    @Override
+                    public void onSuccess(List<Bank> result) {
+                        banks.addAll(result);
+                    }
+
+                    @Override
+                    public void onError(int statusCode, String message) {
+                        validateErrorResponse(TAG, statusCode, message,
+                                null, null, null,
+                                () -> loadBanks(), null);
+                    }
+                });
     }
 
     @OnClick(R.id.back)
@@ -129,7 +161,8 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
                 recyclerView);
 
         adapter.setListener(position -> {
-            bank.setText(banks.get(position));
+            bankS = banks.get(position);
+            bank.setText(banks.get(position).getName());
             alertDialog.dismiss();
         });
     }
@@ -180,8 +213,9 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
         Intent intent = new Intent(this, DispositionMoneyLastActivity.class);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_EMAIL, email);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_TYPE, bankType);
-        intent.putExtra(DispositionMoneyLastActivity.ARGS_BANK, Objects.requireNonNull(bank.getText()).toString());
+        intent.putExtra(DispositionMoneyLastActivity.ARGS_BANK, bankS);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_ACCOUNT, Objects.requireNonNull(countNumber.getText()).toString());
+        intent.putExtra(DispositionMoneyLastActivity.ARGS_AMOUNT, Objects.requireNonNull(cost.getText()).toString());
         intent.putExtra(DispositionMoneyLastActivity.ARGS_AMOUNT, Objects.requireNonNull(cost.getText()).toString());
         startActivity(intent);
     }

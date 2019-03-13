@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_cel"
                         android:textSize="14sp"
-                        android:inputType="number"
+                        android:inputType="numberSigned"
                         android:maxLength="9"
                         style="@style/CustomTextInputEditText"/>
 
@@ -104,6 +104,7 @@
                         android:hint="@string/hint_card_number"
                         android:textSize="14sp"
                         android:maxLength="16"
+                        android:inputType="numberSigned"
                         style="@style/CustomTextInputEditText"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -124,7 +125,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hint_expiration_date"
-                            android:maxLength="5"
+                            android:maxLength="7"
                             android:textSize="14sp"
                             android:inputType="date"
                             style="@style/CustomTextInputEditText"/>
@@ -142,7 +143,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/hint_csv"
                             android:textSize="14sp"
-                            android:inputType="number"
+                            android:inputType="numberSigned"
                             android:maxLength="3"
                             style="@style/CustomTextInputEditText"/>
 

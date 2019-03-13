@@ -9,6 +9,8 @@ import com.finz.rest.slider.RestSlider;
 import com.finz.rest.slider.RestSliderImpl;
 import com.finz.rest.user.RestUser;
 import com.finz.rest.user.RestUserImpl;
+import com.finz.rest.utils.RestUtil;
+import com.finz.rest.utils.RestUtilImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -74,5 +76,10 @@ class AppModule {
     @Provides
     RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx){
         return new RestUserImpl(queue, gson, ctx);
+    }
+
+    @Provides
+    RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx){
+        return new RestUtilImpl(queue, gson, ctx);
     }
 }

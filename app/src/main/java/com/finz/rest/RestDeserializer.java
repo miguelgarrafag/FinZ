@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.finz.rest.slider.entity.Slider;
 import com.finz.rest.user.entity.User;
+import com.finz.rest.utils.entity.Bank;
+import com.finz.rest.utils.entity.Param;
 import com.google.gson.Gson;
 import com.finz.rest.firebaseToken.entity.FirebaseToken;
 import com.finz.rest.token.entity.Token;
@@ -60,6 +62,25 @@ public class RestDeserializer {
             }
         }
 
+    }
+
+    public static  class UtilDeserializer{
+        public static Param param(JSONObject response, Gson gson) {
+            return gson.fromJson(response.toString(), Param.class);
+        }
+
+        public static List<Bank> banks(JSONArray response, Gson gson) {
+            try {
+                List<Bank> result = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    result.add(gson.fromJson(response.getJSONObject(i).toString(), Bank.class));
+                }
+                return result;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
+        }
     }
 
     public static class SliderDeserializer {

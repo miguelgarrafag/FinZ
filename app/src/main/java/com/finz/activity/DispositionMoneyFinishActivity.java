@@ -23,6 +23,9 @@ import com.finz.R;
 import com.finz.RestDinamicConstant;
 import com.finz.constant.ConstantsCore;
 import com.finz.dialogFragment.SignatureDialogFragment;
+import com.finz.rest.RestEmptyListener;
+import com.finz.rest.utils.RestUtil;
+import com.finz.rest.utils.entity.Bank;
 import com.finz.util.UtilCore;
 import com.google.firebase.storage.StorageReference;
 
@@ -37,13 +40,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 
 public class DispositionMoneyFinishActivity extends BaseActivity{
 
+    private static final String TAG = DispositionMoneyFinishActivity.class.getSimpleName();
     private static final int REQUEST_IMAGE_CAPTURE = 1991;
+
+    @Inject
+    RestUtil restUtil;
 
     @BindView(R.id.check_photo)
     ImageView checkPhoto;
@@ -70,9 +79,9 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     private String signatureName;
     private String photoName;
     private String type;
-    private String bank;
+    private Bank bank;
     private String account;
-    private String amount;
+    private double amount;
     private String nameCard;
     private String emailCard;
     private String phoneCard;
@@ -92,9 +101,9 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
         emailV = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_EMAIL);
 
         type = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_TYPE);
-        bank = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_BANK);
+        bank = (Bank) getIntent().getSerializableExtra(DispositionMoneyLastActivity.ARGS_BANK);
         account = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_ACCOUNT);
-        amount = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_AMOUNT);
+        amount = Double.parseDouble(getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_AMOUNT));
         nameCard = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_NAME_CARD);
         emailCard = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_EMAIL_CARD);
         phoneCard = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_PHONE_CARD);
@@ -206,16 +215,42 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
             return;
         }
         showDialog();
+        restUtil.disposition(prefs.getToken().getAccessToken(),
+                tokenId,
+                nameCard,
+                emailCard,
+                phoneCard,
+                type,
+                account,
+                bank.getId(),
+                signatureName,
+                photoName,
+                amount,
+                new RestEmptyListener() {
+                    @Override
+                    public void onSuccess() {
+                        DispositionMoneyActivity.activity.finish();
+                        DispositionMoneyLastActivity.activity.finish();
+                        finish();
+                    }
 
+                    @Override
+                    public void onError(int statusCode, String message) {
+                        validateErrorResponse(TAG, statusCode, message,
+                                null, null, null,
+                                () -> restFinish(), null);
+                    }
+                });
     }
 
     private void culqiToken(){
 
+        showDialog();
         com.culqilib.Card card = new com.culqilib.Card(
                 numberCard,
                 csvCard,
-                Integer.parseInt(monthCard.substring(0,1)),
-                Integer.parseInt(monthCard.substring(3,4)),
+                Integer.parseInt(monthCard.substring(0,2)),
+                Integer.parseInt(monthCard.substring(3,7)),
                 emailCard);
         Token token = new Token(/*"pk_live_cLjnFvPmFu2GH2Ch"*/ "sk_test_c0HkDHxZt3jN9OyS");
 
@@ -232,6 +267,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
 
             @Override
             public void onError(VolleyError error) {
+                closeDialog();
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(new String(error.networkResponse.data, StandardCharsets.UTF_8));

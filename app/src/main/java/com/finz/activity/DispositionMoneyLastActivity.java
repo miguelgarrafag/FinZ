@@ -1,7 +1,10 @@
 package com.finz.activity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.TextInputEditText;
 import android.widget.EditText;
 
@@ -33,6 +36,8 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     public static final String ARGS_NUMBER_CARD = "number_card";
     public static final String ARGS_MONTH_CARD = "month_card";
     public static final String ARGS_CSV_CARD = "csv_card";
+    @SuppressLint("StaticFieldLeak")
+    public static Activity activity;
 
     @BindView(R.id.name_card)
     @NotEmpty(messageResId = R.string.str_register_validate_card_name)
@@ -66,6 +71,7 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
+        activity = this;
 
         args();
         validator.setValidationListener(this);
@@ -100,7 +106,7 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
         Intent intent = new Intent(this, DispositionMoneyFinishActivity.class);
         intent.putExtra(ARGS_EMAIL, getIntent().getStringExtra(ARGS_EMAIL));
         intent.putExtra(ARGS_TYPE, getIntent().getStringExtra(ARGS_TYPE));
-        intent.putExtra(ARGS_BANK, getIntent().getStringExtra(ARGS_BANK));
+        intent.putExtra(ARGS_BANK, getIntent().getSerializableExtra(ARGS_BANK));
         intent.putExtra(ARGS_ACCOUNT, getIntent().getStringExtra(ARGS_ACCOUNT));
         intent.putExtra(ARGS_AMOUNT, getIntent().getStringExtra(ARGS_AMOUNT));
         intent.putExtra(ARGS_NAME_CARD, Objects.requireNonNull(nameCard.getText()).toString());

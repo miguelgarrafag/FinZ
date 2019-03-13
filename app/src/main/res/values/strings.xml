@@ -104,9 +104,9 @@
     <string name="hint_email">Correo</string>
     <string name="hint_cel">Celular</string>
     <string name="hint_amount">Monto recibir (S/)</string>
-    <string name="hint_cost">Monto a Cobrar, %s adicional (S/):</string>
+    <string name="hint_cost">Monto a Cobrar, %s\%% adicional (S/):</string>
     <string name="hint_card_number">Número de Tarjeta</string>
-    <string name="hint_expiration_date">MM/AA</string>
+    <string name="hint_expiration_date">MM/AAAA</string>
     <string name="hint_csv">CSV</string>
     <string name="hint_account_number">Número de Cuenta</string>
     <string name="hint_cant">Monto</string>

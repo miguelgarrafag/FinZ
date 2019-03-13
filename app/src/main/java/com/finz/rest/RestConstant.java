@@ -23,6 +23,9 @@ public class RestConstant {
     public static final String ENDPOINT_TOKEN = "/oauth/token";
     public static final String ENDPOINT_SLIDER =PUBLIC + "/slider";
     private static final String ENDPOINT_USER = SECURED + "/user";
+    public static final String ENDPOINT_PARAM = SECURED + "/param";
+    public static final String ENDPOINT_BANK = SECURED + "/corebank";
+    public static final String ENDPOINT_DISPOSITION = SECURED + "/opdisposition";
     private static final String ENDPOINT_USER_PUBLIC = PUBLIC + "/user";
     public static final String ENDPOINT_USER_SIGNUP = ENDPOINT_USER_PUBLIC + "/signup";
     public static final String ENDPOINT_USER_INFO = ENDPOINT_USER + "/me";

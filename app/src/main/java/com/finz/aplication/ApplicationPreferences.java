@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.finz.rest.user.entity.User;
+import com.finz.rest.utils.entity.Param;
 import com.google.gson.Gson;
 import com.finz.rest.token.entity.Token;
 
@@ -11,6 +12,7 @@ public class ApplicationPreferences {
 
     private static final String KEY_TOKEN = "token";
     private static final String KEY_USER = "user";
+    private static final String KEY_PARAM = "param";
     private static final String KEY_SLIDERS = "sliders";
 
     private SharedPreferences prefs;
@@ -35,6 +37,14 @@ public class ApplicationPreferences {
 
     public User getUser() {
         return gson.fromJson(prefs.getString(KEY_USER, null), User.class);
+    }
+
+    public void setParam(Param param) {
+        prefs.edit().putString(KEY_PARAM, gson.toJson(param)).apply();
+    }
+
+    public Param getParam() {
+        return gson.fromJson(prefs.getString(KEY_PARAM, null), Param.class);
     }
 
     public void setToken(Token token) {

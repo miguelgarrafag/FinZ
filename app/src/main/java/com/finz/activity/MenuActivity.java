@@ -4,11 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.finz.R;
+import com.finz.rest.RestListener;
+import com.finz.rest.utils.RestUtil;
+import com.finz.rest.utils.entity.Param;
+import com.finz.util.UtilCore;
+
+import javax.inject.Inject;
 
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 
 public class MenuActivity extends BaseActivity {
+
+    private static final String TAG = MenuActivity.class.getSimpleName();
+
+    @Inject
+    RestUtil restUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +31,28 @@ public class MenuActivity extends BaseActivity {
             startActivity(new Intent(this, SliderActivity.class));
             finish();
         }
+        if(prefs.getToken()!=null)
+            restParam();
+    }
+
+    private void restParam() {
+        if (!UtilCore.UtilNetwork.isNetworkAvailable(this)) {
+            showToastConnection();
+            return;
+        }
+        restUtil.params(prefs.getToken().getAccessToken(), new RestListener<Param>() {
+            @Override
+            public void onSuccess(Param param) {
+                prefs.setParam(param);
+            }
+
+            @Override
+            public void onError(int statusCode, String message) {
+                validateErrorResponse(TAG, statusCode, message,
+                        null, null, null,
+                        () -> restParam(), null);
+            }
+        });
     }
 
     @OnClick(R.id.button_disposition)

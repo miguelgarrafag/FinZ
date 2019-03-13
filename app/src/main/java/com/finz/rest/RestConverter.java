@@ -30,6 +30,48 @@ public class RestConverter {
         }
     }
 
+    public static class Util{
+        private static final String KEY_NAME_ON_CARD = "nameOnCard";
+        private static final String KEY_EMAIL = "email";
+        private static final String KEY_PHONE = "phone";
+        private static final String KEY_ACOUNT_TYPE = "accountType";
+        private static final String KEY_NRO_DETINY = "nroDestiny";
+        private static final String KEY_BANK = "bank";
+        private static final String KEY_PHOTO_SIGNATURE = "photoSignature";
+        private static final String KEY_PHOTO_DNI = "photoDni";
+        private static final String KEY_AMOUNT = "amount";
+        private static final String KEY_TOKEN_ID = "tokenId";
+
+        public static JSONObject disposition(String tokenC,
+                                             String nameOnCard,
+                                             String email,
+                                             String phone,
+                                             String accountType,
+                                             String nroDestiny,
+                                             long bank,
+                                             String photoSignature,
+                                             String photoDni,
+                                             double amount) {
+            try {
+                JSONObject obj = new JSONObject();
+                obj.put(KEY_TOKEN_ID, tokenC);
+                obj.put(KEY_NAME_ON_CARD, nameOnCard);
+                obj.put(KEY_EMAIL, email);
+                obj.put(KEY_PHONE, phone);
+                obj.put(KEY_ACOUNT_TYPE, accountType);
+                obj.put(KEY_NRO_DETINY, nroDestiny);
+                obj.put(KEY_BANK, bank);
+                obj.put(KEY_PHOTO_SIGNATURE, photoSignature);
+                obj.put(KEY_PHOTO_DNI, photoDni);
+                obj.put(KEY_AMOUNT, amount);
+                return obj;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
+        }
+    }
+
     public static class User {
         private static final String KEY_EMAIL = "email";
         private static final String KEY_PASSWORD = "password";

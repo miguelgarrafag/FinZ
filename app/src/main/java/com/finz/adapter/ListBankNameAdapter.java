@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.finz.R;
+import com.finz.rest.utils.entity.Bank;
 
 import java.util.List;
 
@@ -17,11 +18,11 @@ import butterknife.OnClick;
 
 public class ListBankNameAdapter extends RecyclerView.Adapter<ListBankNameAdapter.ViewHolder> {
 
-    private List<String> items;
+    private List<Bank> items;
     private OnCallBack listener;
 
 
-    public ListBankNameAdapter(List<String> items) {
+    public ListBankNameAdapter(List<Bank> items) {
         this.items = items;
     }
 
@@ -34,9 +35,9 @@ public class ListBankNameAdapter extends RecyclerView.Adapter<ListBankNameAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String item = items.get(position);
+        Bank item = items.get(position);
 
-        holder.bank.setText(item);
+        holder.bank.setText(item.getName());
     }
 
     @Override
