@@ -142,7 +142,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     }
 
     private void uploadDNI(){
-        Uri file = Uri.fromFile(saveToInternalStorage(UtilCore.UtilDraw.rotateBitmapOrientation(mCurrentPhotoPath)));
+        Uri file = Uri.fromFile(saveToInternalStorage(UtilCore.UtilDraw.getResizedBitmap(UtilCore.UtilDraw.rotateBitmapOrientation(mCurrentPhotoPath), 500)));
         StorageReference riversRef = storage.getReference().child(RestDinamicConstant.STOREAGE_FOLDER + ConstantsCore.FStorage.DNI_FOLDER + file.getLastPathSegment());
 
         riversRef.putFile(file)
@@ -188,6 +188,10 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
 
     @OnClick(R.id.s2)
     void OnClickS2(){
+        signaturing();
+    }
+
+    private void signaturing() {
         FragmentManager fm = getSupportFragmentManager();
         SignatureDialogFragment dialogFragment = SignatureDialogFragment.newInstance();
         dialogFragment.setCallBack(new SignatureDialogFragment.signatureCallBack() {

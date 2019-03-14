@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_back_menu"
+        android:contentDescription="@string/app_name"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="25dp"
+        android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="312dp"
+                    android:layout_height="233dp"
+                    android:src="@drawable/ic_disposition_splash"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="-40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_profile_disposition"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/disposition_money"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="25dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:text="@string/splash_disposition_text"/>
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:background="@drawable/selector_button"
+                    android:text="@string/str_begin"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

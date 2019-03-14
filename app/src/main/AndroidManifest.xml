@@ -19,10 +19,11 @@
         android:launchMode="singleTask"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity android:name=".activity.SliderActivity"/>
-        <activity android:name=".activity.LoginRegisterActivity"
-            android:theme="@style/CustomTheme"/>
+        <activity android:name=".activity.LoginRegisterActivity" android:theme="@style/CustomTheme"/>
         <activity android:name=".activity.DispositionMoneyActivity"/>
         <activity android:name=".activity.DispositionMoneyLastActivity"/>
         <activity android:name=".activity.DispositionMoneyFinishActivity"/>
@@ -32,6 +33,7 @@
         <activity android:name=".activity.DepositActivity"/>
         <activity android:name=".activity.ListAccountActivity"/>
         <activity android:name=".activity.CreditEvaluationActivity"/>
+        <activity android:name=".activity.SliderPresentationActivity"/>
         <activity android:name=".activity.ProfileActivity"
             android:theme="@style/CustomThemeNavigationWhite"/>
         <activity

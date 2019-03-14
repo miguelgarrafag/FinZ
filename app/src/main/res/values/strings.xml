@@ -17,6 +17,8 @@
     <string name="action_logout">Cerrar sesión</string>
     <string name="action_price">Lev. Precios</string>
 
+    <string name="splash_disposition_text">Aquí podrás retirar efectivo desde tus tarjetas de crédito para ser depositadas en tus cuentas y convertilos en efectivo, todo a la mejor tarifa.</string>
+
     <string name="dialog_help">Necesito Ayuda</string>
     <string name="dialog_help_msg">Si tienes dudas o inquietudes, por favor comunicate con nosotros s nuestra central:</string>
     <string name="dialog_help_email"><![CDATA[<u>%s</u>]]></string>
@@ -150,6 +152,7 @@
     <string name="str_birthday_date">Fecha de Nacimiento</string>
     <string name="str_dni">DNI</string>
     <string name="str_enter">Ingresar</string>
+    <string name="str_begin">Empecemos</string>
     <string name="str_finalize">Finalizar</string>
     <string name="str_confirmation">Confirmación de Número de Cuenta</string>
     <string name="str_verify">Verifica el Número de Cuenta ingresado</string>

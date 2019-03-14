@@ -36,6 +36,7 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     public static final String ARGS_NUMBER_CARD = "number_card";
     public static final String ARGS_MONTH_CARD = "month_card";
     public static final String ARGS_CSV_CARD = "csv_card";
+
     @SuppressLint("StaticFieldLeak")
     public static Activity activity;
 

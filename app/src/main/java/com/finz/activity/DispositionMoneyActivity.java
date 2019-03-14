@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -91,8 +91,18 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
             return;
         }
 
+        showSplashIntro();
         validator.setValidationListener(this);
         fetchRemoteConfig();
+    }
+
+    private void showSplashIntro() {
+        Intent intent = new Intent(this, SliderPresentationActivity.class);
+        intent.putExtra(SliderPresentationActivity.KEY_IMAGE, R.drawable.ic_disposition_splash);
+        intent.putExtra(SliderPresentationActivity.KEY_ICON, R.drawable.img_profile_disposition);
+        intent.putExtra(SliderPresentationActivity.KEY_TITLE, R.string.disposition_money);
+        intent.putExtra(SliderPresentationActivity.KEY_TEXT, R.string.splash_disposition_text);
+        startActivity(intent);
     }
 
     private void fetchRemoteConfig() {
