@@ -142,7 +142,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     }
 
     private void uploadDNI(){
-        Uri file = Uri.fromFile(saveToInternalStorage(UtilCore.UtilDraw.getResizedBitmap(UtilCore.UtilDraw.rotateBitmapOrientation(mCurrentPhotoPath), 500)));
+        Uri file = Uri.fromFile(saveToInternalStorage(UtilCore.UtilDraw.getResizedBitmap(UtilCore.UtilDraw.rotateBitmapOrientation(mCurrentPhotoPath), 1200)));
         StorageReference riversRef = storage.getReference().child(RestDinamicConstant.STOREAGE_FOLDER + ConstantsCore.FStorage.DNI_FOLDER + file.getLastPathSegment());
 
         riversRef.putFile(file)
