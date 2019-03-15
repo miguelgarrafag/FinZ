@@ -62,8 +62,17 @@ public class MenuActivity extends BaseActivity {
 
     @OnClick(R.id.btn_change_money)
     public void change() {
-        /*startActivity(new Intent(this, ChangeMoneyActivity.class));*/
-        showToastLong(R.string.str_soon);
+        showSplashIntroMoney();
+    }
+
+    private void showSplashIntroMoney() {
+        Intent intent = new Intent(this, SliderPresentationActivity.class);
+        intent.putExtra(SliderPresentationActivity.KEY_IMAGE, R.drawable.ic_dolar_splash);
+        intent.putExtra(SliderPresentationActivity.KEY_ICON, R.drawable.img_change_money);
+        intent.putExtra(SliderPresentationActivity.KEY_TITLE, R.string.making_impruvements);
+        intent.putExtra(SliderPresentationActivity.KEY_TEXT, R.string.splash_disposition_text);
+        intent.putExtra(SliderPresentationActivity.KEY_TEXT_BUTTON, R.string.back);
+        startActivity(intent);
     }
 
     @OnClick(R.id.btn_credit_evaluation)

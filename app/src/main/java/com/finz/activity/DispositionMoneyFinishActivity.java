@@ -23,6 +23,7 @@ import com.finz.R;
 import com.finz.RestDinamicConstant;
 import com.finz.constant.ConstantsCore;
 import com.finz.dialogFragment.SignatureDialogFragment;
+import com.finz.dialogFragment.TakePicTutoDialogFragment;
 import com.finz.rest.RestEmptyListener;
 import com.finz.rest.utils.RestUtil;
 import com.finz.rest.utils.entity.Bank;
@@ -93,8 +94,14 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-
         args();
+    }
+
+    private void tuto() {
+        FragmentManager fm = getSupportFragmentManager();
+        TakePicTutoDialogFragment dialogFragment = TakePicTutoDialogFragment.newInstance();
+        dialogFragment.setListener(this::dispatchTakePictureIntent);
+        dialogFragment.show(fm, TakePicTutoDialogFragment.TAG);
     }
 
     private void args() {
@@ -183,7 +190,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
 
     @OnClick(R.id.s1)
     void OnClickS1(){
-        dispatchTakePictureIntent();
+        tuto();
     }
 
     @OnClick(R.id.s2)
@@ -235,6 +242,13 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
                     public void onSuccess() {
                         DispositionMoneyActivity.activity.finish();
                         DispositionMoneyLastActivity.activity.finish();
+
+                        Intent intent = new Intent(DispositionMoneyFinishActivity.this, ValidProcessActivity.class);
+                        intent.putExtra(ValidProcessActivity.KEY_ICON, R.drawable.ic_launch);
+                        intent.putExtra(ValidProcessActivity.KEY_TITLE, R.string.str_valid_process);
+                        intent.putExtra(ValidProcessActivity.KEY_TEXT, R.string.str_disposition_successs);
+                        startActivity(intent);
+
                         finish();
                     }
 

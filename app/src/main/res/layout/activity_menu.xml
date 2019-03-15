@@ -33,6 +33,7 @@
             android:id="@+id/button_disposition"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:padding="10dp"
             android:background="@drawable/selector_button_menu"
             android:text="@string/str_disposition_money"
             android:fontFamily="@font/product_sans_bold"
@@ -41,6 +42,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
@@ -48,6 +50,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginEnd="20dp"
+                android:padding="10dp"
                 android:fontFamily="@font/product_sans_bold"
                 android:background="@drawable/selector_button_menu"
                 android:text="@string/str_credit_evaluation"
@@ -58,16 +61,29 @@
                 android:id="@+id/btn_change_money"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:background="@drawable/selector_button_menu"
                 android:padding="10dp"
+                android:background="@drawable/selector_button_menu"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/str_change_money"
-                android:layout_marginBottom="3dp"
                 android:textColor="@android:color/white"
                 tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/selector_button_home"
+        android:text="@string/str_history"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"/>
 
 </FrameLayout>

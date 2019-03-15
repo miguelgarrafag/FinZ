@@ -2,6 +2,7 @@ package com.finz.activity;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class SliderPresentationActivity extends BaseActivity {
     public static final String KEY_ICON = "icon";
     public static final String KEY_TITLE = "title";
     public static final String KEY_TEXT = "text";
+    public static final String KEY_TEXT_BUTTON = "text_button";
 
     @BindView(R.id.image)
     ImageView image;
@@ -31,6 +33,9 @@ public class SliderPresentationActivity extends BaseActivity {
     @BindView(R.id.text)
     TextView text;
 
+    @BindView(R.id.next)
+    Button next;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,9 @@ public class SliderPresentationActivity extends BaseActivity {
 
         image.setImageDrawable(ContextCompat.getDrawable(this, getIntent().getIntExtra(KEY_IMAGE, R.drawable.ic_disposition_splash)));
         icon.setImageDrawable(ContextCompat.getDrawable(this, getIntent().getIntExtra(KEY_ICON, R.drawable.img_profile_disposition)));
+
+        if(getIntent().hasExtra(KEY_TEXT_BUTTON))
+            next.setText(getString(getIntent().getIntExtra(KEY_TEXT_BUTTON, R.string.next)));
     }
 
     @OnClick(R.id.next)
