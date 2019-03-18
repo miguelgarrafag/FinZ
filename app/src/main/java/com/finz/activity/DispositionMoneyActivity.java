@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,9 +63,6 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     @BindView(R.id.commission)
     TextView commissionV;
 
-    @BindView(R.id.commission_cost)
-    TextView commissionCost;
-
     @BindView(R.id.saving)
     Button saving;
 
@@ -76,6 +74,7 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     private String bankType = "A";
     private List<Bank> banks = new ArrayList<>();
     private Bank bankS;
+    private String commissionMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +119,8 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
 
     private void getValues() {
         commission = prefs.getParam().getDispPerc() / 100;
-        String commissionMsg = String.valueOf(prefs.getParam().getDispPerc());
-        commissionV.setText(getString(R.string.hint_cost, commissionMsg));
+        commissionMsg = String.valueOf(prefs.getParam().getDispPerc());
+        commissionV.setText(Html.fromHtml(getString(R.string.hint_cost, commissionMsg, getString(R.string.zero))));
         email = firebaseRemoteConfig.getString(KEY_BANK_EMAIL);
         loadBanks();
     }
@@ -200,9 +199,10 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     @OnTextChanged(R.id.cost)
     void OnChangeCost(){
         if(!Objects.requireNonNull(cost.getText()).toString().isEmpty())
-            commissionCost.setText(getString(R.string.blank_decimal,(Double.parseDouble(Objects.requireNonNull(cost.getText()).toString()) * commission) + Double.parseDouble(Objects.requireNonNull(cost.getText()).toString())));
+            commissionV.setText(Html.fromHtml( getString(R.string.hint_cost, commissionMsg,
+                    "<b>" + getString(R.string.blank_decimal,(Double.parseDouble(Objects.requireNonNull(cost.getText()).toString()) * commission) + Double.parseDouble(Objects.requireNonNull(cost.getText()).toString())) + "</b>")));
         else
-            commissionCost.setText(getString(R.string.zero));
+            commissionV.setText(Html.fromHtml(getString(R.string.hint_cost, commissionMsg, getString(R.string.zero))));
     }
 
     private void savingSelected(boolean val){

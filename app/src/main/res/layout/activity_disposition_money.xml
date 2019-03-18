@@ -70,20 +70,11 @@
 
                     <TextView
                         android:id="@+id/commission"
-                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:text="@string/hint_cost"/>
-
-                    <TextView
-                        android:id="@+id/commission_cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/colorBlack"
-                        android:text="@string/zero"/>
 
                 </LinearLayout>
 
