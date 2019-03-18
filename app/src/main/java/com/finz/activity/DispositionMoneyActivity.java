@@ -90,9 +90,17 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
             return;
         }
 
+        loadDefauls();
         showSplashIntro();
         validator.setValidationListener(this);
         fetchRemoteConfig();
+    }
+
+    private void loadDefauls() {
+        commission = prefs.getParam().getDispPerc() / 100;
+        commissionMsg = String.valueOf(prefs.getParam().getDispPerc());
+        commissionV.setText(Html.fromHtml(getString(R.string.hint_cost, commissionMsg, getString(R.string.zero))));
+        loadBanks();
     }
 
     private void showSplashIntro() {
@@ -118,11 +126,7 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     }
 
     private void getValues() {
-        commission = prefs.getParam().getDispPerc() / 100;
-        commissionMsg = String.valueOf(prefs.getParam().getDispPerc());
-        commissionV.setText(Html.fromHtml(getString(R.string.hint_cost, commissionMsg, getString(R.string.zero))));
         email = firebaseRemoteConfig.getString(KEY_BANK_EMAIL);
-        loadBanks();
     }
 
     private void loadBanks() {
