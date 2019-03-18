@@ -70,7 +70,6 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     @BindView(R.id.s2)
     Button s2;
 
-    private String emailV;
     private String mCurrentPhotoPath;
     private String tokenId;
 
@@ -105,8 +104,6 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     }
 
     private void args() {
-        emailV = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_EMAIL);
-
         type = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_TYPE);
         bank = (Bank) getIntent().getSerializableExtra(DispositionMoneyLastActivity.ARGS_BANK);
         account = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_ACCOUNT);
@@ -185,7 +182,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
 
     @OnClick(R.id.question)
     void OnClickQuestion(){
-        UtilCore.UtilUI.question(this, emailV);
+        UtilCore.UtilUI.question(this, getString(R.string.email_contact));
     }
 
     @OnClick(R.id.s1)

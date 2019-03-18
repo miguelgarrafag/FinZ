@@ -384,6 +384,7 @@ public class UtilCore {
             email.setTypeface(ResourcesCompat.getFont(context, R.font.product_sans_regular));
             email.setGravity(Gravity.CENTER);
             email.setFocusable(false);
+            email.setTextSize(15);
             email.setBackground(ContextCompat.getDrawable(context, R.drawable.selector_button_lose_pass));
             email.setText(Html.fromHtml(context.getResources().getString(R.string.dialog_help_email, emailV)));
 

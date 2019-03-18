@@ -66,20 +66,13 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     @NotEmpty(messageResId = R.string.str_register_validate_csv)
     TextInputEditText csv;
 
-    private String emailV;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         activity = this;
 
-        args();
         validator.setValidationListener(this);
-    }
-
-    private void args() {
-        emailV = getIntent().getStringExtra(ARGS_EMAIL);
     }
 
     @OnClick(R.id.back)
@@ -89,7 +82,7 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
 
     @OnClick(R.id.question)
     void OnClickQuestion(){
-        UtilCore.UtilUI.question(this, emailV);
+        UtilCore.UtilUI.question(this, getString(R.string.email_contact));
     }
 
     @OnClick(R.id.btn_pay)

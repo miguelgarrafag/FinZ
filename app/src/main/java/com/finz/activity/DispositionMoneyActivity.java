@@ -5,13 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +27,6 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -41,7 +38,7 @@ import dagger.android.AndroidInjection;
 public class DispositionMoneyActivity extends BaseActivity implements Validator.ValidationListener{
 
     private static final String TAG = DispositionMoneyActivity.class.getSimpleName();
-    public static final String KEY_BANK_EMAIL = "bank_email";
+
     @SuppressLint("StaticFieldLeak")
     public static Activity activity;
 
@@ -70,7 +67,6 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     Button corrent;
 
     private double commission;
-    private String email;
     private String bankType = "A";
     private List<Bank> banks = new ArrayList<>();
     private Bank bankS;
@@ -93,7 +89,6 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
         loadDefauls();
         showSplashIntro();
         validator.setValidationListener(this);
-        fetchRemoteConfig();
     }
 
     private void loadDefauls() {
@@ -110,23 +105,6 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
         intent.putExtra(SliderPresentationActivity.KEY_TITLE, R.string.disposition_money);
         intent.putExtra(SliderPresentationActivity.KEY_TEXT, R.string.splash_disposition_text);
         startActivity(intent);
-    }
-
-    private void fetchRemoteConfig() {
-        firebaseRemoteConfig.fetch(firebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled() ? 0 : TimeUnit.HOURS.toSeconds(1))
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        firebaseRemoteConfig.activateFetched();
-                        Log.e("REMOTE CONFIG", "SUCCESS");
-                    } else {
-                        Log.e("REMOTE CONFIG", "ERROR");
-                    }
-                    getValues();
-                });
-    }
-
-    private void getValues() {
-        email = firebaseRemoteConfig.getString(KEY_BANK_EMAIL);
     }
 
     private void loadBanks() {
@@ -182,7 +160,7 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
 
     @OnClick(R.id.question)
     void OnClickQuestion(){
-        UtilCore.UtilUI.question(this, email);
+        UtilCore.UtilUI.question(this, getString(R.string.email_contact));
     }
 
     @OnClick(R.id.btn_pay)
@@ -225,7 +203,6 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     @Override
     public void onValidationSucceeded() {
         Intent intent = new Intent(this, DispositionMoneyLastActivity.class);
-        intent.putExtra(DispositionMoneyLastActivity.ARGS_EMAIL, email);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_TYPE, bankType);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_BANK, bankS);
         intent.putExtra(DispositionMoneyLastActivity.ARGS_ACCOUNT, Objects.requireNonNull(countNumber.getText()).toString());
