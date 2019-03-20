@@ -18,6 +18,8 @@
     <color name="colorBackgroundEndDark">#727DBD</color>
     <color name="colorSplashInit">#0085dc</color>
     <color name="colorSplashEnd">#00d5ff</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorYellow">#FFC107</color>
 
     <color name="colorWhite">#FFF</color>
     <color name="colorCream">#FAFAFF</color>
