@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.finz.FinZApp;
+import com.finz.rest.history.RestHistory;
+import com.finz.rest.history.RestHistoryImpl;
 import com.finz.rest.slider.RestSlider;
 import com.finz.rest.slider.RestSliderImpl;
 import com.finz.rest.user.RestUser;
@@ -81,5 +83,10 @@ class AppModule {
     @Provides
     RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx){
         return new RestUtilImpl(queue, gson, ctx);
+    }
+
+    @Provides
+    RestHistory provideRestHistory(RequestQueue queue, Gson gson, Context ctx){
+        return new RestHistoryImpl(queue, gson, ctx);
     }
 }

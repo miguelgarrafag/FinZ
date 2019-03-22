@@ -2,6 +2,8 @@ package com.finz.rest;
 
 import android.util.Log;
 
+import com.finz.rest.history.entity.DispositionHistory;
+import com.finz.rest.history.entity.EvaluationHistory;
 import com.finz.rest.slider.entity.Slider;
 import com.finz.rest.user.entity.User;
 import com.finz.rest.utils.entity.Bank;
@@ -29,9 +31,10 @@ public class RestDeserializer {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_DNI = "dni";
-    private static final String KEY_PURCHASE = "purchases";
-    private static final String KEY_RANGE = "range";
-    private static final String KEY_POINTS = "points";
+    private static final String KEY_CREATION_DATE = "creationDate";
+    private static final String KEY_STATUS_TEXT = "statusText";
+    private static final String KEY_AMOUNT = "amount";
+    private static final String KEY_LOAN_TYPE = "loanType";
 
     public static class UserDeserializer {
 
@@ -90,6 +93,38 @@ public class RestDeserializer {
                 List<Slider> result = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     result.add(gson.fromJson(response.getJSONObject(i).toString(), Slider.class));
+                }
+                return result;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
+        }
+    }
+
+    public static class HistoryDeserializer {
+
+        public static List<EvaluationHistory> evaluations(JSONArray response, Gson gson) {
+            try {
+                List<EvaluationHistory> result = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    result.add(new EvaluationHistory(response.getJSONObject(i).getString(KEY_CREATION_DATE),
+                            response.getJSONObject(i).getString(KEY_STATUS_TEXT),
+                            response.getJSONObject(i).getJSONObject(KEY_LOAN_TYPE).getString(KEY_NAME),
+                            response.getJSONObject(i).getDouble(KEY_AMOUNT)));
+                }
+                return result;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
+        }
+
+        public static List<DispositionHistory> dispositions(JSONArray response, Gson gson) {
+            try {
+                List<DispositionHistory> result = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    result.add(gson.fromJson(response.getJSONObject(i).toString(), DispositionHistory.class));
                 }
                 return result;
             } catch (JSONException ex) {
