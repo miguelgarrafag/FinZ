@@ -21,7 +21,6 @@ public class ListBankNameAdapter extends RecyclerView.Adapter<ListBankNameAdapte
     private List<Bank> items;
     private OnCallBack listener;
 
-
     public ListBankNameAdapter(List<Bank> items) {
         this.items = items;
     }

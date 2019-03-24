@@ -42,6 +42,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -243,6 +244,20 @@ public class UtilCore {
 
         @SuppressLint("SimpleDateFormat")
         public static SimpleDateFormat dateFormatService = new SimpleDateFormat("dd/MM/yyyy");
+
+        @SuppressLint("SimpleDateFormat")
+        private static SimpleDateFormat dateFormatServiceNew = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        public static String getDateService(String date) {
+            date = date.substring(0,19);
+            date = date.replace("T", " ");
+            try {
+                return dateFormatService.format(dateFormatServiceNew.parse(date));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
 
         public static void showDateDialog(Context ctx, TextInputEditText edit, TextInputEditText next) {
             new DatePickerDialog(Objects.requireNonNull(ctx), (view, year, month, dayOfMonth) -> {
