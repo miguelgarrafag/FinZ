@@ -31,6 +31,8 @@ public class RestConstant {
     public static final String ENDPOINT_USER_INFO = ENDPOINT_USER + "/me";
     public static final String ENDPOINT_USER_RECOVER_PASS = ENDPOINT_USER + "/me";
     public static final String ENDPOINT_USER_CHANGE_PASS = ENDPOINT_USER + "/me";
+    public static final String ENDPOINT_LOAN_TYPE = SECURED + "/loan_type";
+    public static final String ENDPOINT_EVALUATE = SECURED + "/op_evaluation";
 
 
 }

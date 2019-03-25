@@ -5,8 +5,12 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.finz.FinZApp;
+import com.finz.rest.evaluation.RestEvaluation;
+import com.finz.rest.evaluation.RestEvaluationImpl;
 import com.finz.rest.slider.RestSlider;
 import com.finz.rest.slider.RestSliderImpl;
+import com.finz.rest.type.RestType;
+import com.finz.rest.type.RestTypeImpl;
 import com.finz.rest.user.RestUser;
 import com.finz.rest.user.RestUserImpl;
 import com.finz.rest.utils.RestUtil;
@@ -64,22 +68,32 @@ class AppModule {
     }
 
     @Provides
-    RestFirebaseToken provideRestFirebaseToken(RequestQueue queue, Context ctx){
-        return new RestFirebaseTokenImpl(queue,ctx);
+    RestFirebaseToken provideRestFirebaseToken(RequestQueue queue, Context ctx) {
+        return new RestFirebaseTokenImpl(queue, ctx);
     }
 
     @Provides
-    RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx){
+    RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx) {
         return new RestSliderImpl(queue, gson, ctx);
     }
 
     @Provides
-    RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx){
+    RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx) {
         return new RestUserImpl(queue, gson, ctx);
     }
 
     @Provides
-    RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx){
+    RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx) {
         return new RestUtilImpl(queue, gson, ctx);
+    }
+
+    @Provides
+    RestType provideRestType(RequestQueue queue, Gson gson, Context ctx) {
+        return new RestTypeImpl(queue, gson, ctx);
+    }
+
+    @Provides
+    RestEvaluation providesRestType(RequestQueue queue, Gson gson, Context ctx) {
+        return new RestEvaluationImpl(queue, gson, ctx);
     }
 }

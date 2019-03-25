@@ -2,7 +2,10 @@ package com.finz.rest;
 
 import android.util.Log;
 
+import com.android.volley.VolleyError;
+import com.finz.rest.evaluation.entity.Evaluation;
 import com.finz.rest.slider.entity.Slider;
+import com.finz.rest.type.entity.Type;
 import com.finz.rest.user.entity.User;
 import com.finz.rest.utils.entity.Bank;
 import com.finz.rest.utils.entity.Param;
@@ -64,7 +67,7 @@ public class RestDeserializer {
 
     }
 
-    public static  class UtilDeserializer{
+    public static class UtilDeserializer {
         public static Param param(JSONObject response, Gson gson) {
             return gson.fromJson(response.toString(), Param.class);
         }
@@ -96,6 +99,32 @@ public class RestDeserializer {
                 Log.w(TAG, ex.getMessage());
                 return null;
             }
+        }
+    }
+
+    public static class TypeDeserializer {
+        public static List<Type> Types(JSONArray array, Gson gson) {
+            List<Type> result = new ArrayList<>();
+            try {
+                for (int i = 0; i < array.length(); i++) {
+                    result.add(new Type(array.getJSONObject(i).getLong("id"), array.getJSONObject(i).getString("name")));
+                }
+                return result;
+            } catch (JSONException e) {
+                return null;
+            }
+        }
+    }
+
+    public static class EvaluationDeserializer {
+        public static Evaluation Evaluation(JSONObject response, Gson gson) {
+            try {
+                return new Evaluation(response.getInt("id"),response.getString("codOperation"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+            }
+
         }
     }
 

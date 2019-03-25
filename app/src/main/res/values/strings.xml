@@ -19,6 +19,7 @@
     <string name="action_price">Lev. Precios</string>
 
     <string name="splash_disposition_text">Aquí podrás retirar efectivo desde tus tarjetas de crédito para ser depositadas en tus cuentas y convertilos en efectivo, todo a la mejor tarifa.</string>
+    <string name="splash_credit_text">Aquí podrás temporalmente conocer que instituciones están dispuestas a darte un préstamo y las tasas aproximadas del mercado</string>
     <string name="splash_dolar_text">¡Pronto esta opción estará habilitada para ti! Podrás comprar y vender dólares de la forma más rápida y segura.</string>
     <string name="making_impruvements">Haciendo mejoras</string>
 
@@ -100,8 +101,10 @@
     <string name="str_step_2">Paso 2</string>
     <string name="str_step_3">Paso 3</string>
     <string name="str_personal">Cuenta Destino</string>
+    <string name="str_personal_credit">Personal</string>
     <string name="str_other_count">Datos de la Tarjeta</string>
     <string name="str_btn_payment">Proceder al Pago</string>
+    <string name="str_btn_evaluate">Proceder la Evaluación</string>
     <string name="hint_fullname">Nombres y Apellidos</string>
     <string name="hint_name_card">Nombre del titular de la tarjeta</string>
     <string name="hint_name">Nombre(s)</string>
@@ -121,6 +124,8 @@
     <string name="hint_actual_password">Actual Contraseña</string>
     <string name="hint_new_password">Nueva Contraseña</string>
     <string name="hint_confirm_password">Repetir Contraseña</string>
+    <string name="hint_loan_type">Tipo de préstamo deseado</string>
+    <string name="hint_loan_amount">Monto de préstamo</string>
 
     <string name="srt_email_not_valid">El correo ingresado no es válido</string>
     <string name="str_validate_pass">No debe ser menor de 6 caracteres</string>
@@ -136,6 +141,8 @@
     <string name="str_register_validate_card">Ingrese su número de tarjeta</string>
     <string name="str_register_validate_csv">Ingrese el reverso de su tarjeta</string>
     <string name="str_register_validate_month">Ingrese la fecha de vencimiento</string>
+    <string name="str_evaluate_validate_loan_type">Ingrese el tipo de prestamo</string>
+    <string name="str_evaluate_validate_loan_amount">Ingrese el monto del prestamo</string>
     <string name="str_register_validate_mount">Ingrese la cantidad a recibir</string>
     <string name="str_register_validate_name">Ingrese su nombre</string>
     <string name="srt_exist_email">El correo ingresado ya existe</string>
