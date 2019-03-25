@@ -16,6 +16,7 @@
     <string name="loan_amount">Monto Solicitado</string>
     <string name="amount">Monto</string>
     <string name="total_amount">Monto</string>
+    <string name="empty_history">No tienes movimientos aún</string>
     <string name="credit_card_hiden">**** **** **** %s</string>
 
     <string name="disposition_money">Disposición Efectivo</string>

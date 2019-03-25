@@ -17,6 +17,7 @@ import com.finz.activity.ChangeMoneyActivity;
 import com.finz.activity.CreditEvaluationActivity;
 import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
+import com.finz.activity.HistoryActivity;
 import com.finz.activity.LoginRegisterActivity;
 import com.finz.activity.ProfileActivity;
 import com.mobsandgeeks.saripaar.Validator;
@@ -170,6 +171,9 @@ public abstract class BaseFragment extends Fragment {
                 break;
             case "EC":
                 intent = new Intent(getActivity(), CreditEvaluationActivity.class);
+                break;
+            case "H":
+                intent = new Intent(getActivity(), HistoryActivity.class);
                 break;
         }
         return intent;

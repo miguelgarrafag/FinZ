@@ -10,7 +10,7 @@ import dagger.android.ContributesAndroidInjector;
  * @author SudTechnologies
  */
 @Module
-abstract class FragmentBuilderModule {
+abstract class FragmentLoginRegisterBuilderModule {
 
     @ContributesAndroidInjector
     abstract LoginFragment contributeLoginFragment();

@@ -24,6 +24,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity android:name=".activity.SliderActivity"/>
         <activity android:name=".activity.LoginRegisterActivity" android:theme="@style/CustomTheme"/>
+        <activity android:name=".activity.HistoryActivity" android:theme="@style/CustomTheme"/>
         <activity android:name=".activity.DispositionMoneyActivity"/>
         <activity android:name=".activity.DispositionMoneyLastActivity"/>
         <activity android:name=".activity.DispositionMoneyFinishActivity"/>

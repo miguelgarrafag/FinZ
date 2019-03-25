@@ -35,6 +35,9 @@ public class RestDeserializer {
     private static final String KEY_STATUS_TEXT = "statusText";
     private static final String KEY_AMOUNT = "amount";
     private static final String KEY_LOAN_TYPE = "loanType";
+    private static final String KEY_CONTENT = "content";
+    private static final String KEY_LAST = "last";
+    private static final String KEY_NUMBER = "number";
 
     public static class UserDeserializer {
 
@@ -104,7 +107,35 @@ public class RestDeserializer {
 
     public static class HistoryDeserializer {
 
-        public static List<EvaluationHistory> evaluations(JSONArray response, Gson gson) {
+        @SuppressWarnings("all")
+        public static Pageable pageableEvaluations(JSONObject response, Gson gson) {
+            try {
+                return new Pageable(
+                        evaluations(response.getJSONArray(KEY_CONTENT)),
+                        response.getBoolean(KEY_LAST),
+                        response.getInt(KEY_NUMBER)
+                );
+            } catch (JSONException ex) {
+                Log.e(TAG, ex.getMessage());
+                return null;
+            }
+        }
+
+        @SuppressWarnings("all")
+        public static Pageable pageableDispositions(JSONObject response, Gson gson) {
+            try {
+                return new Pageable(
+                        dispositions(response.getJSONArray(KEY_CONTENT), gson),
+                        response.getBoolean(KEY_LAST),
+                        response.getInt(KEY_NUMBER)
+                );
+            } catch (JSONException ex) {
+                Log.e(TAG, ex.getMessage());
+                return null;
+            }
+        }
+
+        public static List<EvaluationHistory> evaluations(JSONArray response) {
             try {
                 List<EvaluationHistory> result = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {

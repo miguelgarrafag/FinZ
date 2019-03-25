@@ -2,10 +2,12 @@ package com.finz.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.finz.R;
@@ -49,6 +51,23 @@ public class DispositionHistoryAdapter extends RecyclerView.Adapter<DispositionH
         holder.text3.setText(context.getString(R.string.blank_decimal, item.getAmount()));
         holder.label4.setText(context.getString(R.string.total_amount));
         holder.text4.setText(context.getString(R.string.blank_decimal, item.getAmountTotal()));
+
+        switch (item.getStatusText()){
+            case "Pendiente":
+                holder.statusColor.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.shape_history_process));
+                break;
+            case "Anulado":
+                holder.statusColor.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.shape_history_canceled));
+                break;
+            case "Aprobado":
+                holder.statusColor.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.shape_history_success));
+                break;
+            case "Error":
+                holder.statusColor.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.shape_history_error));
+                break;
+                default:
+                    holder.statusColor.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.shape_history_process));
+        }
     }
 
     @Override
@@ -90,6 +109,9 @@ public class DispositionHistoryAdapter extends RecyclerView.Adapter<DispositionH
 
         @BindView(R.id.text4)
         TextView text4;
+
+        @BindView(R.id.status_color)
+        ImageView statusColor;
 
         ViewHolder(View itemView) {
             super(itemView);

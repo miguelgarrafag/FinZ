@@ -6,6 +6,7 @@ import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.DispositionMoneyFinishActivity;
 import com.finz.activity.DispositionMoneyLastActivity;
+import com.finz.activity.HistoryActivity;
 import com.finz.activity.InformationDispositionActivity;
 import com.finz.activity.ListAccountActivity;
 import com.finz.activity.LoginRegisterActivity;
@@ -21,8 +22,11 @@ import dagger.android.ContributesAndroidInjector;
 abstract class BuildersModule {
 
     //ACTIVITIES
-    @ContributesAndroidInjector(modules = {FragmentBuilderModule.class})
+    @ContributesAndroidInjector(modules = {FragmentLoginRegisterBuilderModule.class})
     abstract LoginRegisterActivity bindLoginRegisterActivity();
+
+    @ContributesAndroidInjector(modules = {FragmentHistoryBuilderModule.class})
+    abstract HistoryActivity bindHistoryActivity();
 
     @ContributesAndroidInjector()
     abstract MenuActivity bindMenuActivity();

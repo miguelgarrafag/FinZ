@@ -65,6 +65,11 @@ public class MenuActivity extends BaseActivity {
         showSplashIntroMoney();
     }
 
+    @OnClick(R.id.history)
+    public void history() {
+        startActivity(new Intent(this, HistoryActivity.class));
+    }
+
     private void showSplashIntroMoney() {
         Intent intent = new Intent(this, SliderPresentationActivity.class);
         intent.putExtra(SliderPresentationActivity.KEY_IMAGE, R.drawable.ic_dolar_splash);

@@ -32,7 +32,18 @@ public class RestConstant {
     public static final String ENDPOINT_USER_INFO = ENDPOINT_USER + "/me";
     public static final String ENDPOINT_USER_RECOVER_PASS = ENDPOINT_USER + "/me";
     public static final String ENDPOINT_USER_CHANGE_PASS = ENDPOINT_USER + "/me";
-    public static final String ENDPOINT_HISTORY_EVALUATION = ENDPOINT_OPEVALUATION + "/me";
+    private static final String ENDPOINT_HISTORY_EVALUATION = ENDPOINT_OPEVALUATION + "/me";
+    private static final String ENDPOINT_HISTORY_DISPOSITION = ENDPOINT_DISPOSITION + "/me";
+
+    private static final String PAR_PAGE = "page=";
+
+    public static String pathPageHistoryEvaluation(int page) {
+        return ENDPOINT_HISTORY_EVALUATION + "?" + PAR_PAGE + page;
+    }
+
+    public static String pathPageHistoryDisposition(int page) {
+        return ENDPOINT_HISTORY_DISPOSITION + "?" + PAR_PAGE + page;
+    }
 
 
 }
