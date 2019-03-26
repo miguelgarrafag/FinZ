@@ -69,12 +69,12 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void showToastLong(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
     protected void showToastLong(@StringRes int message) {
         if(getActivity()!=null)
-            Toast.makeText(getActivity(), getString(message), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(message), Toast.LENGTH_LONG).show();
     }
 
     protected void showToastConnection() {
@@ -83,7 +83,7 @@ public abstract class BaseFragment extends Fragment {
                 getActivity().findViewById(R.id.custom_connection_error));
 
         Toast toast = new Toast(getActivity().getApplicationContext());
-        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
     }
@@ -143,6 +143,18 @@ public abstract class BaseFragment extends Fragment {
                 break;
             default:
                 validateMessage(restMessage, R.string.str_unknow_rest_error);
+        }
+
+    }
+
+    public void validateErrorResponse(int statusCode){
+        switch (statusCode) {
+            case ConstantsCore.HttpStatus.UNAUTHORIZED:
+                showToastLong(getString(R.string.str_login_failed));
+                break;
+            case ConstantsCore.HttpStatus.BAD_REQUEST:
+                showToastLong(getString(R.string.str_login_failed_pass));
+                break;
         }
 
     }

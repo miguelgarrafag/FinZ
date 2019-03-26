@@ -66,6 +66,7 @@
     <string name="str_signature_info">La Firma es necesaria en cada trasacción emitida</string>
     <string name="str_finish_proccess">Finalizar Proceso</string>
     <string name="str_login_failed">El correo o contraseña son incorrectos</string>
+    <string name="str_login_failed_pass">La contraseña es incorrecta</string>
     <string name="str_login_email_valid">Ingrese su correo</string>
     <string name="str_login_email_format">Ingrese un correo válido</string>
     <string name="str_login_password_valid">Ingrese su Contraseña</string>

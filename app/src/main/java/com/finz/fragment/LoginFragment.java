@@ -132,9 +132,7 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
                     @Override
                     public void onError(int statusCode, String message) {
                         closeDialog();
-                        validateErrorResponse(TAG, statusCode, getString(R.string.str_login_failed),
-                                getString(R.string.str_login_failed), null, null,
-                                null, null);
+                        validateErrorResponse(statusCode);
                     }
                 });
     }
