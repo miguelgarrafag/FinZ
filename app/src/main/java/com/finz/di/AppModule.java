@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+
 import com.finz.FinZApp;
 import com.finz.rest.history.RestHistory;
 import com.finz.rest.history.RestHistoryImpl;
@@ -17,8 +18,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.finz.aplication.ApplicationPreferences;
-import com.finz.rest.firebaseToken.RestFirebaseToken;
-import com.finz.rest.firebaseToken.RestFirebaseTokenImpl;
 import com.finz.rest.token.RestToken;
 import com.finz.rest.token.RestTokenImpl;
 
@@ -66,27 +65,22 @@ class AppModule {
     }
 
     @Provides
-    RestFirebaseToken provideRestFirebaseToken(RequestQueue queue, Context ctx){
-        return new RestFirebaseTokenImpl(queue,ctx);
-    }
-
-    @Provides
-    RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx){
+    RestSlider provideRestSlider(RequestQueue queue, Gson gson, Context ctx) {
         return new RestSliderImpl(queue, gson, ctx);
     }
 
     @Provides
-    RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx){
+    RestUser provideRestUser(RequestQueue queue, Gson gson, Context ctx) {
         return new RestUserImpl(queue, gson, ctx);
     }
 
     @Provides
-    RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx){
+    RestUtil provideRestUtil(RequestQueue queue, Gson gson, Context ctx) {
         return new RestUtilImpl(queue, gson, ctx);
     }
 
     @Provides
-    RestHistory provideRestHistory(RequestQueue queue, Gson gson, Context ctx){
+    RestHistory provideRestHistory(RequestQueue queue, Gson gson, Context ctx) {
         return new RestHistoryImpl(queue, gson, ctx);
     }
 }

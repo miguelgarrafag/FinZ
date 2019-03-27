@@ -17,7 +17,8 @@ import com.finz.rest.RestDeserializer;
 import com.finz.rest.RestEmptyListener;
 import com.finz.rest.RestListListener;
 import com.finz.rest.RestListener;
-import com.finz.rest.utils.entity.Bank;
+import com.finz.rest.utils.entity.BankType;
+import com.finz.rest.utils.entity.Evaluation;
 import com.finz.rest.utils.entity.Param;
 import com.google.gson.Gson;
 
@@ -73,12 +74,12 @@ public class RestUtilImpl implements RestUtil {
     }
 
     @Override
-    public void banks(final String token, final RestListListener<Bank> listener) {
+    public void banks(final String token, final RestListListener<BankType> listener) {
         JsonArrayRequest req = new JsonArrayRequest(
                 Request.Method.GET,
                 RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_BANK,
                 null,
-                response -> listener.onSuccess(RestDeserializer.UtilDeserializer.banks(response, gson)),
+                response -> listener.onSuccess(RestDeserializer.UtilDeserializer.banksType(response, gson)),
                 error -> {
                     if (error.networkResponse != null)
                         listener.onError(error.networkResponse.statusCode, error.getMessage());
@@ -122,6 +123,63 @@ public class RestUtilImpl implements RestUtil {
                 return params;
             }
 
+        };
+        req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(req);
+    }
+
+    @Override
+    public void loadType(final String token, RestListListener<BankType> listener) {
+        JsonArrayRequest req = new JsonArrayRequest(
+                RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_LOAN_TYPE,
+                response -> listener.onSuccess(RestDeserializer.UtilDeserializer.banksType(response, gson)),
+                error -> {
+                    if (error.networkResponse != null)
+                        listener.onError(error.networkResponse.statusCode, error.getMessage());
+                    else
+                        toast.show();
+                }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                String auth = RestConstant.BEARER + token;
+                params.put(RestConstant.AUTHORIZATION, auth);
+                return params;
+            }
+        };
+        req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(req);
+    }
+
+    @Override
+    public void sendEvaluation(String token,
+                               String name,
+                               String email,
+                               String dni,
+                               String phone,
+                               long loanType,
+                               Double amount,
+                               RestListener<Evaluation> listener) {
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST,
+                RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_OPEVALUATION,
+                RestConverter.User.sendEvaluation(name, email, dni, phone, loanType, amount),
+                response -> listener.onSuccess(RestDeserializer.EvaluationDeserializer.Evaluation(response)),
+                error -> {
+                    if (error.networkResponse != null){
+                        listener.onError(error.networkResponse.statusCode, error.getMessage());
+                    } else
+                        toast.show();
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<>();
+                String auth = RestConstant.BEARER + token;
+                params.put(RestConstant.AUTHORIZATION, auth);
+                return params;
+            }
         };
         req.setRetryPolicy(new DefaultRetryPolicy(RestConstant.TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

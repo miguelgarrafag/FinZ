@@ -2,14 +2,17 @@ package com.finz.rest;
 
 import android.util.Log;
 
+
 import com.finz.rest.history.entity.DispositionHistory;
 import com.finz.rest.history.entity.EvaluationHistory;
+
+import com.finz.rest.utils.entity.Evaluation;
+
 import com.finz.rest.slider.entity.Slider;
 import com.finz.rest.user.entity.User;
-import com.finz.rest.utils.entity.Bank;
+import com.finz.rest.utils.entity.BankType;
 import com.finz.rest.utils.entity.Param;
 import com.google.gson.Gson;
-import com.finz.rest.firebaseToken.entity.FirebaseToken;
 import com.finz.rest.token.entity.Token;
 
 import org.json.JSONArray;
@@ -25,7 +28,6 @@ public class RestDeserializer {
     private static final String KEY_ID = "id";
     private static final String KEY_RECORDS = "records";
     private static final String KEY_ACCESS_TOKEN = "accessToken";
-    private static final String KEY_TOKEN = "token";
     private static final String KEY_NAME = "name";
     private static final String KEY_LAST_NAME = "lastName";
     private static final String KEY_EMAIL = "email";
@@ -54,7 +56,7 @@ public class RestDeserializer {
             return gson.fromJson(response, Token.class);
         }
 
-        public static User user(JSONObject response, Gson gson) {
+        public static User user(JSONObject response) {
             try {
                 return new User(response.getInt(KEY_ID),
                         response.getString(KEY_EMAIL),
@@ -70,16 +72,16 @@ public class RestDeserializer {
 
     }
 
-    public static  class UtilDeserializer{
+    public static class UtilDeserializer {
         public static Param param(JSONObject response, Gson gson) {
             return gson.fromJson(response.toString(), Param.class);
         }
 
-        public static List<Bank> banks(JSONArray response, Gson gson) {
+        public static List<BankType> banksType(JSONArray response, Gson gson) {
             try {
-                List<Bank> result = new ArrayList<>();
+                List<BankType> result = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
-                    result.add(gson.fromJson(response.getJSONObject(i).toString(), Bank.class));
+                    result.add(gson.fromJson(response.getJSONObject(i).toString(), BankType.class));
                 }
                 return result;
             } catch (JSONException ex) {
@@ -135,7 +137,7 @@ public class RestDeserializer {
             }
         }
 
-        public static List<EvaluationHistory> evaluations(JSONArray response) {
+        private static List<EvaluationHistory> evaluations(JSONArray response) {
             try {
                 List<EvaluationHistory> result = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
@@ -151,7 +153,7 @@ public class RestDeserializer {
             }
         }
 
-        public static List<DispositionHistory> dispositions(JSONArray response, Gson gson) {
+        private static List<DispositionHistory> dispositions(JSONArray response, Gson gson) {
             try {
                 List<DispositionHistory> result = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
@@ -165,12 +167,10 @@ public class RestDeserializer {
         }
     }
 
-    public static class FirebaseTokenDeserializer {
-
-        public static FirebaseToken firebaseToken(JSONObject response) {
+    public static class EvaluationDeserializer {
+        public static Evaluation Evaluation(JSONObject response) {
             try {
-                return new FirebaseToken(response.getLong(KEY_ID),
-                        response.getString(KEY_TOKEN));
+                return new Evaluation(response.getInt("id"),response.getString("codOperation"));
             } catch (JSONException e) {
                 e.printStackTrace();
                 return null;

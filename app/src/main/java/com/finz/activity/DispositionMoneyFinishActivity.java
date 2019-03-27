@@ -26,7 +26,7 @@ import com.finz.dialogFragment.SignatureDialogFragment;
 import com.finz.dialogFragment.TakePicTutoDialogFragment;
 import com.finz.rest.RestEmptyListener;
 import com.finz.rest.utils.RestUtil;
-import com.finz.rest.utils.entity.Bank;
+import com.finz.rest.utils.entity.BankType;
 import com.finz.util.UtilCore;
 import com.google.firebase.storage.StorageReference;
 
@@ -79,7 +79,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
     private String signatureName;
     private String photoName;
     private String type;
-    private Bank bank;
+    private BankType bank;
     private String account;
     private double amount;
     private String nameCard;
@@ -105,7 +105,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
 
     private void args() {
         type = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_TYPE);
-        bank = (Bank) getIntent().getSerializableExtra(DispositionMoneyLastActivity.ARGS_BANK);
+        bank = (BankType) getIntent().getSerializableExtra(DispositionMoneyLastActivity.ARGS_BANK);
         account = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_ACCOUNT);
         amount = Double.parseDouble(getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_AMOUNT));
         nameCard = getIntent().getStringExtra(DispositionMoneyLastActivity.ARGS_NAME_CARD);

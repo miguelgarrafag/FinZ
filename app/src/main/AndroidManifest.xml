@@ -28,11 +28,7 @@
         <activity android:name=".activity.DispositionMoneyActivity"/>
         <activity android:name=".activity.DispositionMoneyLastActivity"/>
         <activity android:name=".activity.DispositionMoneyFinishActivity"/>
-        <activity android:name=".activity.InformationDispositionActivity" />
         <activity android:name=".activity.ValidProcessActivity"/>
-        <activity android:name=".activity.ChangeMoneyActivity"/>
-        <activity android:name=".activity.DepositActivity"/>
-        <activity android:name=".activity.ListAccountActivity"/>
         <activity android:name=".activity.CreditEvaluationActivity"/>
         <activity android:name=".activity.SliderPresentationActivity"/>
         <activity android:name=".activity.ProfileActivity"

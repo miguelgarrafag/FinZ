@@ -62,5 +62,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    implementation 'androidx.exifinterface:exifinterface:1.1.0-alpha01'
 }
 apply plugin: 'com.google.gms.google-services'

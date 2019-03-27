@@ -49,7 +49,7 @@ public class RestUserImpl implements RestUser {
                 Request.Method.POST,
                 RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_USER_SIGNUP,
                 RestConverter.User.register(email, password, name, lastName, phone, dni),
-                response -> listener.onSuccess(RestDeserializer.UserDeserializer.user(response, gson)),
+                response -> listener.onSuccess(RestDeserializer.UserDeserializer.user(response)),
                 error -> {
                     if (error.networkResponse != null)
                         listener.onError(error.networkResponse.statusCode, error.getMessage());
@@ -68,7 +68,7 @@ public class RestUserImpl implements RestUser {
                 Request.Method.GET,
                 RestDinamicConstant.URL_BASE + RestConstant.ENDPOINT_USER_INFO,
                 null,
-                response -> listener.onSuccess(RestDeserializer.UserDeserializer.user(response, gson)),
+                response -> listener.onSuccess(RestDeserializer.UserDeserializer.user(response)),
                 error -> {
                     if (error.networkResponse != null)
                         listener.onError(error.networkResponse.statusCode, error.getMessage());

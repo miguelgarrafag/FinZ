@@ -1,8 +1,6 @@
 package com.finz.fragment;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.finz.activity.ChangeMoneyActivity;
 import com.finz.activity.CreditEvaluationActivity;
-import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.HistoryActivity;
 import com.finz.activity.LoginRegisterActivity;
@@ -86,21 +82,6 @@ public abstract class BaseFragment extends Fragment {
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
-    }
-
-    public void createSimpleDialog(String title, String question, String okButtonText, String cancelButtonText,
-                                   DialogInterface.OnClickListener okCallBack,
-                                   DialogInterface.OnClickListener calcelCallBack) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        builder.setTitle(title)
-                .setMessage(question)
-                .setPositiveButton(okButtonText, okCallBack)
-                .setNegativeButton(cancelButtonText, calcelCallBack);
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 
     public void refreshToken(String TAG, SuccessListener listener){
@@ -175,13 +156,10 @@ public abstract class BaseFragment extends Fragment {
             case "P":
                 intent = new Intent(getActivity(), ProfileActivity.class);
                 break;
-            case "E":
+            case "DM":
                 intent = new Intent(getActivity(), DispositionMoneyActivity.class);
                 break;
-            case "C":
-                intent = new Intent(getActivity(), ChangeMoneyActivity.class);
-                break;
-            case "EC":
+            case "CE":
                 intent = new Intent(getActivity(), CreditEvaluationActivity.class);
                 break;
             case "H":

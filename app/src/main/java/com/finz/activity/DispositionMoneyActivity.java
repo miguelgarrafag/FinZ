@@ -15,10 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.finz.R;
-import com.finz.adapter.ListBankNameAdapter;
+import com.finz.adapter.ListBankTypeAdapter;
 import com.finz.rest.RestListListener;
 import com.finz.rest.utils.RestUtil;
-import com.finz.rest.utils.entity.Bank;
+import com.finz.rest.utils.entity.BankType;
 import com.finz.util.UtilCore;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
@@ -68,8 +68,8 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
 
     private double commission;
     private String bankType = "A";
-    private List<Bank> banks = new ArrayList<>();
-    private Bank bankS;
+    private List<BankType> banks = new ArrayList<>();
+    private BankType bankS;
     private String commissionMsg;
 
     @Override
@@ -80,7 +80,7 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
 
         if(prefs.getUser()==null){
             Intent intent = new Intent(this, LoginRegisterActivity.class);
-            intent.putExtra(LoginRegisterActivity.ACTIVITY, "E");
+            intent.putExtra(LoginRegisterActivity.ACTIVITY, "DM");
             startActivity(intent);
             finish();
             return;
@@ -113,9 +113,9 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
             return;
         }
         restUtil.banks(prefs.getToken().getAccessToken(),
-                new RestListListener<Bank>() {
+                new RestListListener<BankType>() {
                     @Override
-                    public void onSuccess(List<Bank> result) {
+                    public void onSuccess(List<BankType> result) {
                         banks.addAll(result);
                     }
 
@@ -141,7 +141,7 @@ public class DispositionMoneyActivity extends BaseActivity implements Validator.
     private void showBank() {
         final RecyclerView recyclerView = new RecyclerView(this);
 
-        ListBankNameAdapter adapter = new ListBankNameAdapter(banks);
+        ListBankTypeAdapter adapter = new ListBankTypeAdapter(banks);
         recyclerView.setLayoutParams(UtilCore.UtilViews.getParamsBank());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

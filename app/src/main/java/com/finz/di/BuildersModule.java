@@ -1,19 +1,14 @@
 package com.finz.di;
 
-import com.finz.activity.ChangeMoneyActivity;
 import com.finz.activity.CreditEvaluationActivity;
-import com.finz.activity.DepositActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.DispositionMoneyFinishActivity;
 import com.finz.activity.DispositionMoneyLastActivity;
 import com.finz.activity.HistoryActivity;
-import com.finz.activity.InformationDispositionActivity;
-import com.finz.activity.ListAccountActivity;
 import com.finz.activity.LoginRegisterActivity;
 import com.finz.activity.MenuActivity;
 import com.finz.activity.ProfileActivity;
 import com.finz.activity.SliderActivity;
-import com.finz.activity.ValidProcessActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -42,21 +37,6 @@ abstract class BuildersModule {
 
     @ContributesAndroidInjector()
     abstract DispositionMoneyFinishActivity bindDispositionMoneyFinishActivity();
-
-    @ContributesAndroidInjector()
-    abstract InformationDispositionActivity bindInformationDispositionActivity();
-
-    @ContributesAndroidInjector()
-    abstract ValidProcessActivity bindValidProcessActivity();
-
-    @ContributesAndroidInjector()
-    abstract ChangeMoneyActivity bindChangeMoneyActivity();
-
-    @ContributesAndroidInjector()
-    abstract DepositActivity bindDepositActivity();
-
-    @ContributesAndroidInjector()
-    abstract ListAccountActivity bindListAccountActivity();
 
     @ContributesAndroidInjector()
     abstract CreditEvaluationActivity bindCreditEvaluationActivity();

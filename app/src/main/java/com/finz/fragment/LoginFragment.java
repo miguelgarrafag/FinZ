@@ -101,6 +101,7 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
                 new RestEmptyListener() {
                     @Override
                     public void onSuccess() {
+                        closeDialog();
                         showToastLong(R.string.str_lose_pass_ok);
                     }
 

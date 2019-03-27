@@ -5,15 +5,15 @@ import java.io.Serializable;
 /**
  * @author SudTechnologies
  */
-public class Bank implements Serializable {
+public class BankType implements Serializable {
 
     private long id;
     private String name;
 
-    public Bank() {
+    public BankType() {
     }
 
-    public Bank(long id, String name) {
+    public BankType(long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -36,7 +36,7 @@ public class Bank implements Serializable {
 
     @Override
     public String toString() {
-        return "Bank{" +
+        return "BankType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

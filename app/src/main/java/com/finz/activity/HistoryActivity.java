@@ -3,6 +3,8 @@ package com.finz.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.finz.R;
@@ -25,6 +27,12 @@ public class HistoryActivity extends BaseActivity implements HasSupportFragmentI
 
     @BindView(R.id.title)
     TextView title;
+
+    @BindView(R.id.disposition)
+    ImageView disposition;
+
+    @BindView(R.id.evaluation)
+    ImageView evaluation;
 
     private HistoryEvaluationFragment evaluationFragment;
     private HistoryDispositionFragment dispositionFragment;
@@ -63,6 +71,7 @@ public class HistoryActivity extends BaseActivity implements HasSupportFragmentI
 
     @OnClick(R.id.evaluation)
     void onEvaluationClick(){
+        menuButtons("e");
         title.setText(getString(R.string.credit_evaluation));
         getSupportFragmentManager()
                 .beginTransaction()
@@ -73,12 +82,18 @@ public class HistoryActivity extends BaseActivity implements HasSupportFragmentI
 
     @OnClick(R.id.disposition)
     void onDispositionClick(){
+        menuButtons("d");
         title.setText(getString(R.string.disposition_money));
         getSupportFragmentManager()
                 .beginTransaction()
                 .hide(evaluationFragment)
                 .show(dispositionFragment)
                 .commit();
+    }
+
+    private void menuButtons(String val){
+        evaluation.setImageDrawable(val.equals("e")?ContextCompat.getDrawable(this,R.drawable.img_credit_evaluation_pressed):ContextCompat.getDrawable(this,R.drawable.selector_history_evaluation));
+        disposition.setImageDrawable(val.equals("e")?ContextCompat.getDrawable(this,R.drawable.selector_history_disposition):ContextCompat.getDrawable(this,R.drawable.img_profile_disposition_pressed));
     }
 
     @Override

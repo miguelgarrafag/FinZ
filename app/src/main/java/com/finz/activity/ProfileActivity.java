@@ -116,7 +116,7 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void RestChangePass(String oldPass, String newPass) {
-        if (UtilCore.UtilNetwork.isNetworkAvailable(this)) {
+        if (!UtilCore.UtilNetwork.isNetworkAvailable(this)) {
             showToastConnection();
             return;
         }
@@ -125,6 +125,7 @@ public class ProfileActivity extends BaseActivity {
                 new RestEmptyListener() {
                     @Override
                     public void onSuccess() {
+                        closeDialog();
                         showToastLong(R.string.str_pass_changed);
                     }
 

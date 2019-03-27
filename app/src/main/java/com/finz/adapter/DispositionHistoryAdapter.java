@@ -14,6 +14,8 @@ import com.finz.R;
 import com.finz.rest.history.entity.DispositionHistory;
 import com.finz.util.UtilCore;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -29,6 +31,7 @@ public class DispositionHistoryAdapter extends RecyclerView.Adapter<DispositionH
         this.context = context;
     }
 
+    @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history, parent, false);

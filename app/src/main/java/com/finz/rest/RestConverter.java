@@ -7,7 +7,6 @@ import com.finz.RestDinamicConstant;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 
 public class RestConverter {
@@ -15,22 +14,7 @@ public class RestConverter {
     private static final String TAG = RestConverter.class.getSimpleName();
 
 
-    public static class FirebaseToken {
-        private static final String KEY_TOKEN = "token";
-
-        public static JSONObject firebaseToken(String firebaseToken) {
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put(KEY_TOKEN, firebaseToken);
-                return obj;
-            } catch (JSONException ex) {
-                Log.w(TAG, ex.getMessage());
-                return null;
-            }
-        }
-    }
-
-    public static class Util{
+    public static class Util {
         private static final String KEY_NAME_ON_CARD = "nameOnCard";
         private static final String KEY_EMAIL = "email";
         private static final String KEY_PHONE = "phone";
@@ -81,6 +65,8 @@ public class RestConverter {
         private static final String KEY_DNI = "dni";
         private static final String KEY_OLD_PASS = "oldPass";
         private static final String KEY_NEW_PASS = "newPass";
+        private static final String KEY_LOAN_TYPE = "loanType";
+        private static final String KEY_AMOUNT = "amount";
 
         public static JSONObject resetPass(String email) {
             try {
@@ -120,6 +106,30 @@ public class RestConverter {
                 Log.w(TAG, ex.getMessage());
                 return null;
             }
+        }
+
+        public static JSONObject sendEvaluation(String name,
+                                                String email,
+                                                String dni,
+                                                String phone,
+                                                long loanType,
+                                                Double amount) {
+
+            try {
+                JSONObject obj = new JSONObject();
+                obj.put(KEY_NAME, name);
+                obj.put(KEY_EMAIL, email);
+                obj.put(KEY_DNI, dni);
+                obj.put(KEY_PHONE, phone);
+                obj.put(KEY_LOAN_TYPE, loanType);
+                obj.put(KEY_AMOUNT, amount);
+                Log.e("OBJECT", obj.toString());
+                return obj;
+            } catch (JSONException ex) {
+                Log.w(TAG, ex.getMessage());
+                return null;
+            }
+
         }
     }
 

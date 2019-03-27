@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import com.finz.R;
 import com.finz.rest.RestListener;
+import com.finz.rest.token.RestToken;
+import com.finz.rest.token.entity.Token;
 import com.finz.rest.user.RestUser;
 import com.finz.rest.user.entity.User;
 import com.finz.util.UtilCore;
@@ -33,6 +35,9 @@ public class RegisterFragment extends BaseFragment implements Validator.Validati
 
     @Inject
     RestUser restUser;
+
+    @Inject
+    RestToken restToken;
 
     @BindView(R.id.name)
     @NotEmpty(messageResId = R.string.str_register_validate_name)
@@ -108,8 +113,7 @@ public class RegisterFragment extends BaseFragment implements Validator.Validati
                     @Override
                     public void onSuccess(User user) {
                         prefs.setUser(user);
-                        startActivity(evaluateIntent());
-                        Objects.requireNonNull(getActivity()).finish();
+                        RestToken();
                     }
 
                     @Override
@@ -118,6 +122,29 @@ public class RegisterFragment extends BaseFragment implements Validator.Validati
                         validateErrorResponse(TAG, statusCode, message,
                                 null, null, getString(R.string.srt_exist_email),
                                 null, null);
+                    }
+                });
+    }
+
+    public void RestToken(){
+        if (!UtilCore.UtilNetwork.isNetworkAvailable(Objects.requireNonNull(getContext()))) {
+            showToastConnection();
+            return;
+        }
+        restToken.requestAccessToken(Objects.requireNonNull(email.getText()).toString(),
+                Objects.requireNonNull(pass.getText()).toString(),
+                new RestListener<Token>() {
+                    @Override
+                    public void onSuccess(Token token) {
+                        prefs.setToken(token);
+                        startActivity(evaluateIntent());
+                        Objects.requireNonNull(getActivity()).finish();
+                    }
+
+                    @Override
+                    public void onError(int statusCode, String message) {
+                        closeDialog();
+                        validateErrorResponse(statusCode);
                     }
                 });
     }

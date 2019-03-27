@@ -31,6 +31,11 @@ public class MenuActivity extends BaseActivity {
             startActivity(new Intent(this, SliderActivity.class));
             finish();
         }
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
         if(prefs.getToken()!=null)
             restParam();
     }
