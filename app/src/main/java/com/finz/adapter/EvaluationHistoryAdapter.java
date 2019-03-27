@@ -50,7 +50,7 @@ public class EvaluationHistoryAdapter extends RecyclerView.Adapter<EvaluationHis
         holder.label1.setText(context.getString(R.string.loan_type));
         holder.text1.setText(item.getType());
         holder.label2.setText(context.getString(R.string.loan_amount));
-        holder.text2.setText(context.getString(R.string.blank_decimal,item.getAmount()));
+        holder.text2.setText(context.getString(R.string.blank_soles,item.getAmount()));
 
         holder.label3.setVisibility(View.GONE);
         holder.text3.setVisibility(View.GONE);

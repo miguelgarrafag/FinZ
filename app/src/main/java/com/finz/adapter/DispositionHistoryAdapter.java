@@ -51,9 +51,9 @@ public class DispositionHistoryAdapter extends RecyclerView.Adapter<DispositionH
         holder.label2.setText(context.getString(R.string.account_number));
         holder.text2.setText(item.getNroDestiny());
         holder.label3.setText(context.getString(R.string.amount));
-        holder.text3.setText(context.getString(R.string.blank_decimal, item.getAmount()));
+        holder.text3.setText(context.getString(R.string.blank_soles, item.getAmount()));
         holder.label4.setText(context.getString(R.string.total_amount));
-        holder.text4.setText(context.getString(R.string.blank_decimal, item.getAmountTotal()));
+        holder.text4.setText(context.getString(R.string.blank_soles, item.getAmountTotal()));
 
         switch (item.getStatusText()){
             case "Pendiente":

@@ -100,7 +100,7 @@
     <string name="blank_2_string_ss">%s - %s</string>
     <string name="blank_2_string_ns">%s%s</string>
     <string name="blank_2_string_s">%s %s</string>
-    <string name="blank_soles">S/%.2f</string>
+    <string name="blank_soles">S/%,.2f</string>
     <string name="blank_decimal">%.2f</string>
     <string name="blank_date">%s/%s/%d</string>
     <string name="blank_not_found">No se encontró \"%s\"</string>
