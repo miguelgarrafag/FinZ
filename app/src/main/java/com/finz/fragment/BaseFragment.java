@@ -15,6 +15,7 @@ import com.finz.activity.CreditEvaluationActivity;
 import com.finz.activity.DispositionMoneyActivity;
 import com.finz.activity.HistoryActivity;
 import com.finz.activity.LoginRegisterActivity;
+import com.finz.activity.MenuActivity;
 import com.finz.activity.ProfileActivity;
 import com.mobsandgeeks.saripaar.Validator;
 import com.finz.R;
@@ -156,15 +157,9 @@ public abstract class BaseFragment extends Fragment {
             case "P":
                 intent = new Intent(getActivity(), ProfileActivity.class);
                 break;
-            case "DM":
-                intent = new Intent(getActivity(), DispositionMoneyActivity.class);
-                break;
-            case "CE":
-                intent = new Intent(getActivity(), CreditEvaluationActivity.class);
-                break;
-            case "H":
-                intent = new Intent(getActivity(), HistoryActivity.class);
-                break;
+                default:
+                    intent = new Intent(getActivity(), MenuActivity.class);
+
         }
         return intent;
     }
