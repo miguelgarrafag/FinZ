@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:name="com.finz.FinZApp"
@@ -27,11 +28,19 @@
         <activity android:name=".activity.ProfileActivity" android:theme="@style/CustomThemeNavigationWhite"/>
         <activity android:name=".activity.SliderActivity"/>
         <activity android:name=".activity.DispositionMoneyActivity"/>
-        <activity android:name=".activity.DispositionMoneyLastActivity"/>
         <activity android:name=".activity.DispositionMoneyFinishActivity"/>
         <activity android:name=".activity.ValidProcessActivity"/>
         <activity android:name=".activity.CreditEvaluationActivity"/>
         <activity android:name=".activity.SliderPresentationActivity"/>
+        <activity android:name=".activity.DispositionMoneyLastActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
         <activity
             android:name=".activity.MenuActivity"
             android:theme="@style/AppTheme.NoActionBar">

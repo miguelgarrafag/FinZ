@@ -123,7 +123,7 @@
     <string name="hint_amount">Monto recibir (S/)</string>
     <string name="hint_cost">Monto a Cobrar, %s\%% adicional (S/): <b>%s</b></string>
     <string name="hint_card_number">Número de Tarjeta</string>
-    <string name="hint_expiration_date">MM/AAAA</string>
+    <string name="hint_expiration_date">MM/AA</string>
     <string name="hint_csv">CSV</string>
     <string name="hint_account_number">Número de Cuenta</string>
     <string name="hint_cant">Monto</string>
@@ -214,4 +214,12 @@
     <string name="str_lose_pass">¿Olvidaste tu contraseña?</string>
     <string name="str_security">*De preferencia utilice letras mayúsculas y/o números para mayor seguridad</string>
 
+    <!--NFC-->
+    <string name="ad_nfcTurnOn_title">La función NFC está apagada</string>
+    <string name="ad_nfcTurnOn_message">Si lo desea puede encenderla y leer los datos de la tarjeta mas rapidamente, ¿Desea hacerlo?</string>
+    <string name="ad_nfcTurnOn_pos">Encender</string>
+    <string name="ad_nfcTurnOn_neg">Cancelar</string>
+    <string name="snack_doNotMoveCard">¡Por favor no mueva la tarjeta e intente de nuevo!</string>
+    <string name="snack_unknownEmv">Circuito NFC desconocido</string>
+    <string name="snack_lockedNfcCard">Circuito NFC bloqueado para esta tarjeta</string>
 </resources>

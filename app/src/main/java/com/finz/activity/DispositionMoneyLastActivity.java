@@ -2,10 +2,16 @@ package com.finz.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.finz.R;
 import com.finz.util.UtilCore;
@@ -14,6 +20,8 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.pro100svitlo.creditCardNfcReader.CardNfcAsyncTask;
+import com.pro100svitlo.creditCardNfcReader.utils.CardNfcUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +30,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
 
-public class DispositionMoneyLastActivity extends BaseActivity implements Validator.ValidationListener{
+public class DispositionMoneyLastActivity extends BaseActivity implements Validator.ValidationListener, CardNfcAsyncTask.CardNfcInterface {
 
     public static final String ARGS_EMAIL = "email";
     public static final String ARGS_TYPE = "type";
@@ -65,6 +73,16 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     @NotEmpty(messageResId = R.string.str_register_validate_csv)
     TextInputEditText csv;
 
+    @BindView(R.id.nfc)
+    ImageView nfc;
+
+    //NFC Variables
+    private CardNfcAsyncTask mCardNfcAsyncTask;
+    private CardNfcUtils mCardNfcUtils;
+    private NfcAdapter mNfcAdapter;
+    private boolean mIntentFromCreate;
+    private AlertDialog mTurnNfcDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -72,6 +90,8 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
         activity = this;
 
         validator.setValidationListener(this);
+
+        nfcInit();
     }
 
     @OnClick(R.id.back)
@@ -93,6 +113,7 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
     protected int getLayoutResourceId() {
         return R.layout.activity_disposition_money_last;
     }
+
 
     @Override
     public void onValidationSucceeded() {
@@ -119,4 +140,84 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
             view.setError(message);
         }
     }
+
+    //NFC
+    //**********************************************************************************
+    private void nfcInit() {
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (mNfcAdapter != null){
+            mCardNfcUtils = new CardNfcUtils(this);
+            mIntentFromCreate = true;
+            onNewIntent(getIntent());
+            nfc.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mIntentFromCreate = false;
+        if (mNfcAdapter != null && !mNfcAdapter.isEnabled()) showTurnOnNfcDialog();
+        else if (mNfcAdapter != null) mCardNfcUtils.enableDispatch();
+
+    }
+
+    private void showTurnOnNfcDialog(){
+        if (mTurnNfcDialog == null)
+            mTurnNfcDialog = new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.ad_nfcTurnOn_title))
+                    .setMessage(getString(R.string.ad_nfcTurnOn_message))
+                    .setPositiveButton(getString(R.string.ad_nfcTurnOn_pos), (dialogInterface, i) -> startActivity(new Intent(android.provider.Settings.ACTION_NFC_SETTINGS)))
+                    .setNegativeButton(getString(R.string.ad_nfcTurnOn_neg), (dialogInterface, i) -> {})
+                    .create();
+        mTurnNfcDialog.show();
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mNfcAdapter != null) mCardNfcUtils.disableDispatch();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (mNfcAdapter != null && mNfcAdapter.isEnabled())
+            mCardNfcAsyncTask = new CardNfcAsyncTask.Builder(this, intent, mIntentFromCreate).build();
+    }
+
+    @Override
+    public void startNfcReadCard() {
+        showDialog();
+    }
+
+    @Override
+    public void cardIsReadyToRead() {
+        cardNumber.setText(mCardNfcAsyncTask.getCardNumber());
+        month.setText(mCardNfcAsyncTask.getCardExpireDate());
+    }
+
+    @Override
+    public void doNotMoveCardSoFast() {
+        showToastLong(R.string.snack_doNotMoveCard);
+    }
+
+    @Override
+    public void unknownEmvCard() {
+        showToastLong(R.string.snack_unknownEmv);
+    }
+
+    @Override
+    public void cardWithLockedNfc() {
+        showToastLong(R.string.snack_lockedNfcCard);
+    }
+
+    @Override
+    public void finishNfcReadCard() {
+        closeDialog();
+        mCardNfcAsyncTask = null;
+    }
+    //NFC
+    //**********************************************************************************
 }

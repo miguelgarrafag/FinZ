@@ -265,7 +265,7 @@ public class DispositionMoneyFinishActivity extends BaseActivity{
                 numberCard,
                 csvCard,
                 Integer.parseInt(monthCard.substring(0,2)),
-                Integer.parseInt(monthCard.substring(3,7)),
+                Integer.parseInt("20" + monthCard.substring(3,5)),
                 emailCard);
         Token token = new Token(/*"pk_live_cLjnFvPmFu2GH2Ch"*/ "sk_test_c0HkDHxZt3jN9OyS");
 
