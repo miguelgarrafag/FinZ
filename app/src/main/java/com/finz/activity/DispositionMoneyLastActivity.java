@@ -3,12 +3,11 @@ package com.finz.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,9 +27,13 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cards.pay.paycardsrecognizer.sdk.Card;
+import cards.pay.paycardsrecognizer.sdk.ScanCardIntent;
 import dagger.android.AndroidInjection;
 
 public class DispositionMoneyLastActivity extends BaseActivity implements Validator.ValidationListener, CardNfcAsyncTask.CardNfcInterface {
+
+    static final int REQUEST_CODE_SCAN_CARD = 15;
 
     public static final String ARGS_EMAIL = "email";
     public static final String ARGS_TYPE = "type";
@@ -94,6 +97,11 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
         nfcInit();
     }
 
+    @OnClick(R.id.camera)
+    void OnClickCamera(){
+        scanCard();
+    }
+
     @OnClick(R.id.back)
     void OnClickBack(){
         onBackPressed();
@@ -140,6 +148,33 @@ public class DispositionMoneyLastActivity extends BaseActivity implements Valida
             view.setError(message);
         }
     }
+
+    //CARDSCANN
+    //**********************************************************************************
+    private void scanCard() {
+        Intent intent = new ScanCardIntent.Builder(this).build();
+        startActivityForResult(intent, REQUEST_CODE_SCAN_CARD);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SCAN_CARD) {
+            if (resultCode == Activity.RESULT_OK) {
+                Card card = data.getParcelableExtra(ScanCardIntent.RESULT_PAYCARDS_CARD);
+
+                cardNumber.setText(card.getCardNumber());
+                month.setText(card.getExpirationDate());
+
+                String cardData = "Card number: " + card.getCardNumber() + "\n"
+                        + "Card holder: " + card.getCardHolderName() + "\n"
+                        + "Card expiration date: " + card.getExpirationDate();
+                Log.i("CARDSCANN", "Card info: " + cardData);
+            } else if (resultCode == Activity.RESULT_CANCELED) Log.i("CARDSCANN", "Scan canceled");
+            else Log.i("CARDSCANN", "Scan failed");
+        }
+    }
+    //**********************************************************************************
 
     //NFC
     //**********************************************************************************
