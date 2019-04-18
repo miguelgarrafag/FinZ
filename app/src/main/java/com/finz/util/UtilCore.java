@@ -11,9 +11,11 @@ import androidx.exifinterface.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.view.Gravity;
@@ -272,5 +274,23 @@ public class UtilCore {
             return Bitmap.createScaledBitmap(image, width, height, true);
         }
 
+    }
+
+    public static class BiometricUtils {
+
+        public static boolean isBiometricPromptEnabled() {
+            return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P);
+        }
+
+        /*
+         * Condition III: Fingerprint authentication can be matched with a
+         * registered fingerprint of the user. So we need to perform this check
+         * in order to enable fingerprint authentication
+         *
+         * */
+        public static boolean isFingerprintAvailable(Context context) {
+            FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(context);
+            return fingerprintManager.hasEnrolledFingerprints();
+        }
     }
 }
