@@ -4,10 +4,13 @@
     package="com.finz">
 
     <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.fingerprint" android:required="true" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:name="com.finz.FinZApp"
@@ -23,6 +26,7 @@
         android:largeHeap="true"
         android:hardwareAccelerated="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
+
         <activity android:name=".activity.LoginRegisterActivity" android:theme="@style/CustomTheme"/>
         <activity android:name=".activity.HistoryActivity" android:theme="@style/CustomThemeNavigationWhite"/>
         <activity android:name=".activity.ProfileActivity" android:theme="@style/CustomThemeNavigationWhite"/>
@@ -49,6 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.finz.fileprovider"

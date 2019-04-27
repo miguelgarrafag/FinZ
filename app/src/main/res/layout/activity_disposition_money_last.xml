@@ -113,21 +113,39 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/card_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_card_number"
-                        android:textSize="14sp"
-                        android:maxLength="16"
-                        android:inputType="numberSigned"
-                        style="@style/CustomTextInputEditText"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/card_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/hint_card_number"
+                            android:textSize="14sp"
+                            android:maxLength="16"
+                            android:inputType="numberSigned"
+                            style="@style/CustomTextInputEditText"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageButton
+                        android:id="@+id/camera"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/selector_button_menu"
+                        android:src="@drawable/ic_camera"
+                        android:tint="@color/colorWhite"
+                        android:contentDescription="@string/app_name" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

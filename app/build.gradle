@@ -53,6 +53,7 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:1.14.0'
     implementation 'com.github.LouisP79:CulqiLib:v2.0'
     implementation 'com.github.pro100svitlo:creditCardNfcReader:1.0.3'
+    implementation 'com.github.LouisP79:CardScanner:v1.1'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
