@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.finz.R;
 import com.finz.rest.utils.entity.BankType;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class ListBankTypeAdapter extends RecyclerView.Adapter<ListBankTypeAdapte
         this.items = items;
     }
 
-    @NotNull
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bank_name, parent, false);
